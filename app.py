@@ -37,11 +37,29 @@ def setup_app():
 
 application = setup_app()
 
+# @route('/static/<filename:path>')
+# def send_static(filename):
+#     return static_file(filename, root='static')
 
-@get('/', template='index.html')
+@get('/')
 def index():
+    return bottle.template('index')
+
+@get('/landing')
+def index():
+    return bottle.template('landing')
+
+@get('/test', template="template.html")
+def test():
     return {}
 
+from models import User, Account
+
+@get('/hello/<name>')
+def index(name='World'):
+    dbs = db_session(close=True)
+
+    raise
 
 
 if __name__ == '__main__':
