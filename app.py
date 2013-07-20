@@ -1,7 +1,9 @@
-from bottle import route, run
+#!/usr/bin/env python
+import bottle
+from bottle import get, run
 
-@route('/hello')
-def hello():
-    return "Hello World!"
+@get('/hello/<name>')
+def index(name='World'):
+    return bottle.template('<b>Hello {{name}}</b>!', name=name)
 
-run(host="10.50.19.51", port=9001, debug=True)
+run(host='localhost', port=9091)
