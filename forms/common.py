@@ -42,4 +42,7 @@ class RegisterForm(Form):
 
 class AddTask(Form):
     task = TextField()
-    description = TextField(u'Task Description')
+
+class UploadForm(Form):
+    uploaded_file = FileField(u'Upload your video: ',
+        [Required()])
