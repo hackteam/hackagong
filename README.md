@@ -1,4 +1,4 @@
 hackagong
 =========
 
-Hackagong idea
+Incentivising to do lists using social media.
