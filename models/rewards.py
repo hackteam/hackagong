@@ -18,8 +18,8 @@ class Reward(Base):
     created = Column(DateTime)
 
     #Relationships
-    creator = relationship('Account')
-    owner_id = Column(Integer, ForeignKey('accounts.id'))
+    creator = relationship('User')
+    owner_id = Column(Integer, ForeignKey('users.id'))
 
     # task = relationship('Task')
 
