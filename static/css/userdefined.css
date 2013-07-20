@@ -258,3 +258,44 @@ background-image: -webkit-gradient(
 span.boldhash {
     font-weight: bold;
 }
+
+.userimg {
+    height: 150px;
+    width: 150px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 75px;
+    -webkit-box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    float: left;
+}
+
+#user_name {
+    float: left;
+    margin-left: 30px;
+    font-size: 50px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.profile-third {
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.profile-third .numb {
+    font-size: 150px;
+}
+
+.profile-third .numbitem {
+    line-height: 50px;
+    font-size: 20px;
+    color: #82368C;
+}
+
+.profile-third .numbview {
+    font-size: 20px;
+    color: #29313D;
+}

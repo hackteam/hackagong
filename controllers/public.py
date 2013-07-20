@@ -15,6 +15,10 @@ def index():
     	'message':'Your message would show up here.'
     }
 
+@get('/profile',template="profile.html")
+def lists():
+	return {}
+
 @get('/lists',template="todolists.html")
 def lists():
 	return {}
