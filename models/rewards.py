@@ -50,10 +50,10 @@ class Reward(Base):
             self.media_length = media_length
         return self.id
 
-class Video_Reward(Reward):
+#class Video_Reward(Reward):
 
-    def __init__(self,name,)
-    pass
+#    def __init__(self,name,)
+#    pass
 
 class Music_Reward(Reward):
     pass
