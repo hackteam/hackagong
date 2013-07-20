@@ -9,12 +9,14 @@ import json
 
 @get('/', template='landing.html')
 def index():
-    form = forms.LoginForm()
+    login_form = forms.LoginForm()
+    reg_form = forms.RegisterForm()
     ws = existing_web_session()
     if (ws and 'user_id' in ws):
         redirect('profile')
     return {
-        'form':form,
+        'login_form':login_form,
+        'reg_form':reg_form,
         'message':'Your message would show up here.'
     }
 

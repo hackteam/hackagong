@@ -1,6 +1,5 @@
 window.insertionPoint = 0;
 window.addingTask = 0;
-console.log('1');
 
 window.onload = function () {
 
@@ -16,7 +15,7 @@ window.onload = function () {
 
     if ($('#addtask').length > 0) {
     var insertionPointHack = setInterval(function(){insertionPoint('addtask')},700);
-    }  
+    }
     if ($('#addlist').length > 0) {
     var insertionPointHack = setInterval(function(){insertionPoint2('addlist')},700);
     }
@@ -30,7 +29,7 @@ window.onload = function () {
         } else {
             window.insertionPoint = 0;
             $("#"+divname).html("<p>Type your task here |</p>");
-        }                         
+        }
     }
 
     function insertionPoint2(divname){
@@ -41,10 +40,8 @@ window.onload = function () {
         } else {
             window.insertionPoint2 = 0;
             $("#"+divname).html("<p>Type the name of your list here |</p>");
-        }                         
+        }
     }
-
-    console.log(1);
 
     function showform(){
         $(".hiddenform").animate({'height': '300px'}, 400);
@@ -77,7 +74,7 @@ window.onload = function () {
             url: '',
             data: {task_id: taskid}
         }).done(function(msg) {
-            
+
         });
     });
 

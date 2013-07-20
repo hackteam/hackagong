@@ -11,11 +11,10 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, Sequence('users_id_seq', optional=True), primary_key=True)
-
     username = Column(Unicode(30), unique=True, nullable=False)
-
     password = Column(Unicode(40),nullable=False)
-
+    name = Column(String(100), default=None)
+    email = Column(String(100), default=None)
 
 
     created = Column(DateTime)
@@ -29,4 +28,13 @@ class User(Base):
         self.created = datetime.utcnow()
         self.last_login = last_login
 
+    def set_details(self,username=None,password=None,name=None,email=None):
+        if (username):
+            self.username = username
+        if (password):
+            self.password = password
+        if (name):
+            self.name = name
+        if (email):
+            self.email = email
 
