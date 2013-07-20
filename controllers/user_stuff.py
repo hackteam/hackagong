@@ -2,6 +2,7 @@ import bottle
 from bottle import get, post, view, static_file, request, response, route, abort
 from config import BASE_DIR_STATIC, BASE_URL_PATH_RES
 from utils import redirect, existing_web_session
+from controllers.common import logged_in_only
 from models import Task, User, db_session
 import forms
 
@@ -11,13 +12,14 @@ def home():
 	form = forms.AddTask()
 	ws = existing_web_session()
 
-
+	raise
 	return {
 		'ws':ws,
 		'form':form
 	}
 
 @post('/addtask',template='home.html')
+@logged_in_only
 def add_task():
 	'''Add task for the current user'''
 

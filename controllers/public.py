@@ -6,7 +6,7 @@ from models import db_session, User
 from forms import form_filter
 from utils import web_session, web_session_exists, existing_web_session, redirect
 
-@get('/', template='index.html')
+@get('/', template='landing.html')
 def index():
     form = forms.LoginForm()
     ws = existing_web_session()
@@ -15,9 +15,6 @@ def index():
     	'message':'Your message would show up here.'
     }
 
-@get('/landing',template="landing.html")
-def landing():
-	return {}
 
 @get('/addtask',template="addtask.html")
 def addTask():
