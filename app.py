@@ -8,20 +8,26 @@ import models
 import controllers
 import config
 
+from werkzeug.debug import DebuggedApplication
+import warnings
+
 def setup_app():
 	#Add templates path -- more to come?
-	bottle.TEMPLATE_PATH.insert(0, path.join(config.BASE_DIR, 'templates'))
+    bottle.TEMPLATE_PATH.insert(0, path.join(config.BASE_DIR, 'templates'))
 
-	bottle.debug(True)
+    bottle.debug(True)
+    
+    #Change errors to warnings
+    warnings.simplefilter('error')
 
 	#Grab the app
-	app = bottle.app()
-
-	#Session control stuff
-	sess_app = SessionMiddleware(app, config.SESSION_OPTS)
+    app = bottle.app()
 
 
-	return sess_app
+    app.catchall = False
+    app = DebuggedApplication(app, evalex=True)
+
+    return app
 
 
 
@@ -30,7 +36,13 @@ application = setup_app()
 
 @get('/hello/<name>')
 def index(name='World'):
-    return bottle.template('<b>Hello {{name}}</b>!!', name=name)
+    x = 11
+
+    raise 
 
 if __name__ == '__main__':
-	bottle.run(host='localhost', port=9091, reloader=True)
+    SERVER = getattr(bottle, 'WaitressServer', bottle.AutoServer)
+    bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST, 
+        port=config.BIND_TO_PORT, reloader=True, debug=True)
+
+
