@@ -69,13 +69,6 @@ def doLogin():
     #})
 
 
-@get('/register',template='register.html')
-def register():
-    form = forms.RegisterForm()
-
-    return {
-        'form':form
-    }
 
 @post('/register',template='register.html')
 def register_post():
@@ -118,10 +111,22 @@ def register_post():
 
 
     else:
-        return {
-            'message':'Account created! Huzzah'
-        }
+        if login(post['username'].strip(), post['password']) == 'success':
+            return "success"
+        else:
+            return "fail"
+
+def login(username, password):
+    
+    dbs = db_session(close=True)
+    user = dbs.query(User).filter(User.username == username).first()
 
 
+    if user and user.password == password:
+        ws = web_session()
+        ws['username'] = username
+        ws['user_id'] = user.id
+        return "success"
 
+    return "fail"
 
