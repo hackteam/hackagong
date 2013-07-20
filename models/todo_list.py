@@ -13,11 +13,11 @@ class Todo(Base):
     id = Column(Integer, Sequence('todo_list_seq', optional=True), primary_key=True)
     
     name = Column(Unicode(100), nullable=False)    
-    owner_id = Column(Integer, ForeignKey('accounts.id'))
+    owner_id = Column(Integer, ForeignKey('users.id'))
     created = Column(DateTime)
 
     #Relationships
-    owner = relationship('Account', backref='todo_list')
+    owner = relationship('User', backref='todo_list')
     tasks = relationship('Task', cascade='all, delete-orphan')
 
 

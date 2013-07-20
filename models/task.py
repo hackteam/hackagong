@@ -16,8 +16,8 @@ class Task(Base):
     name = Column(String(50))
     description = Column(String(500))
     todo_list_id = Column(Integer, ForeignKey('todo_list.id'))
-    user_created_id = Column(Integer, ForeignKey('accounts.id'))
-    user_reviewer_id = Column(Integer, ForeignKey('accounts.id'))
+    user_created_id = Column(Integer, ForeignKey('users.id'))
+    user_reviewer_id = Column(Integer, ForeignKey('users.id'))
     # reward_id = relationship("Reward")
 
     def __init__(self, name, creator, reviewer, reward, description=None):

@@ -26,11 +26,11 @@ def setup_app():
 
     #Grab the app
     app = bottle.app()
+    app.catchall = False
     sess_app = SessionMiddleware(app, config.SESSION_OPTS)
 
 
 
-    sess_app.catchall = False
     sess_app = DebuggedApplication(sess_app, evalex=True)
 
     return sess_app

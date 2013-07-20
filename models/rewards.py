@@ -25,9 +25,11 @@ class Reward(Base):
 
 
     #Relationships
-    creator = relationship('Account')
-    owner_id = Column(Integer, ForeignKey('accounts.id'))
-    task = relationship('Task')
+#    creator = relationship('Account')
+#    owner_id = Column(Integer, ForeignKey('accounts.id'))
+#    task = relationship('Task')
+    creator = relationship('User')
+    owner_id = Column(Integer, ForeignKey('users.id'))
 
 
 
