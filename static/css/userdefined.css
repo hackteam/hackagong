@@ -2,6 +2,19 @@
     margin-bottom:
 }
 
+.mainbox {
+	padding: 20px;
+}
+
+.task {
+	background-color: red;
+	margin: 20px;
+}
+
+.posttask {
+	background-color: blue;
+}
+
 .navbar-inverse .navbar-inner {
     background: #fff;
 }
