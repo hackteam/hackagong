@@ -84,10 +84,15 @@ body {
 
 .checkbox {
     height: 40px;
-    width: 30px;
+    width: 40px;
     border-right: 1px dashed #e5e5e4;
     float: left;
     margin-right: 20px;
+    padding-left: 0px;
+}
+
+.checkbox input[type=checkbox] {
+    margin: 13px;
 }
 
 .perkfrom {
