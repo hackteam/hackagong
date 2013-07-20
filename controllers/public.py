@@ -15,6 +15,10 @@ def index():
     	'message':'Your message would show up here.'
     }
 
+@get('/lists',template="todolists.html")
+def lists():
+	return {}
+
 @get('/landing',template="landing.html")
 def landing():
 	return {}
