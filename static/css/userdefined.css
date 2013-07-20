@@ -21,7 +21,7 @@ body {
 }
 
 .task {
-	background-color: red;
+	background-color: #fff;
 	margin: 20px;
     height: 40px;
     padding: 10px;
@@ -48,6 +48,7 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    background: rgba(0,0,0, 0.4)
 }
 
 .navbar-inverse .navbar-inner {
@@ -67,7 +68,7 @@ body {
 }
 
 .list-container {
-    background: #c2c2c2;
+    background: #e5e5e4;
     margin-top: 100px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -93,7 +94,7 @@ body {
     color: blue;
 }
 
-.perkfrom img {
+.roundpic {
     height: 40px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
