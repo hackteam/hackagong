@@ -4,12 +4,12 @@ from config import BASE_DIR_STATIC
 
 
 
-@route(['/static/:filename#.*#', r'/:filename#favicon\.ico#'])
-def static_files(filename):
-    ''' Route for styles and images '''
-    print BASE_DIR_STATIC
-    return static_file(filename, root=BASE_DIR_STATIC)
+# @route(['/static/:filename#.*#', r'/:filename#favicon\.ico#'])
+# def static_files(filename):
+#     ''' Route for styles and images '''
+#     print BASE_DIR_STATIC
+#     return static_file(filename, root=BASE_DIR_STATIC)
 
-# @route('/static/<filename:path>')
-# def send_static(filename):
-#     return static_file(filename, root='static')
+@route('/static/<filename:path>')
+def send_static(filename):
+    return static_file(filename, root='static')

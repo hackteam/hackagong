@@ -9,6 +9,7 @@ import models
 import controllers
 import config
 
+from models import db_session
 from werkzeug.debug import DebuggedApplication
 import warnings
 
@@ -17,7 +18,9 @@ def setup_app():
     bottle.TEMPLATE_PATH.insert(0, path.join(config.BASE_DIR, 'templates'))
 
     bottle.debug(True)
-    
+
+    models.db_init()
+
     #Change errors to warnings
     warnings.simplefilter('error')
 
@@ -34,9 +37,6 @@ def setup_app():
 
 application = setup_app()
 
-# @route('/static/<filename:path>')
-# def send_static(filename):
-#     return static_file(filename, root='static')
 
 @get('/')
 def test():
@@ -46,11 +46,14 @@ def test():
 def test():
     return bottle.template('test')
 
+from models import User, Account
+
 @get('/hello/<name>')
 def index(name='World'):
-    x = 11
+    dbs = db_session(close=True)
 
-    raise 
+    raise
+
 
 if __name__ == '__main__':
     SERVER = getattr(bottle, 'WaitressServer', bottle.AutoServer)

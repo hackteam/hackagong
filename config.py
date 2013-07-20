@@ -17,7 +17,8 @@ BASE_URL_PATH_RES = BASE_URL_PATH + 'static/'
 FULL_BASE_URL = BASE_HOST_URL + BASE_URL_PATH
 
 #Models and shit
-DB_NAME = 'database.db'
+DB_NAME = 'database.sqlite3'
+DB_URL = 'sqlite:///'+path.join(BASE_DIR,DB_NAME)
 SQL_DEBUG = True
 
 #Sessions path
