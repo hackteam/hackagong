@@ -88,6 +88,7 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    margin-bottom: 40px;
 }
 
 .checkbox {
@@ -152,4 +153,57 @@ p.name {
     margin-right: 20px;
     color: #29313D;
     float: left;
+}
+
+.mainbox.landing {
+    height: 565px;
+}
+
+.landingimg {
+    width: 300px;
+}
+
+.leftlanding {
+    margin-top: 60px;
+    margin-left: 40px;
+    float: left;
+}
+
+.subtitle {
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.subtitle2 {
+    margin-top: 140px;
+    font-size: 40px;
+    line-height: 50px;
+}
+
+span.purple {
+    color: #82368C;
+}
+
+.landing-btn {
+    background: #82368C;
+    height: 60px;
+    padding: 10px;
+    width: 280px;
+    float: left;
+    margin-top: 400px;
+    margin-left: 74px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.landing-btn p {
+    color: #fff;
+    line-height: 50px;
+    font-size: 50px;
+    text-align: center;
+}
+
+span.boldhash {
+    font-weight: bold;
 }
