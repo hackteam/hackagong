@@ -15,10 +15,10 @@ window.onload = function () {
         if (window.addingTask != 0) return;
         if ( window.insertionPoint == 0 ){
             window.insertionPoint = 1;
-            $("#"+divname).html("<p>Type your task here</p>");
+            $("#"+divname).html("Type your task here");
         } else {
             window.insertionPoint = 0;
-            $("#"+divname).html("<p>Type your task here |</p>");
+            $("#"+divname).html("Type your task here |");
         }                         
     }
     console.log(1);
