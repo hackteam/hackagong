@@ -4,7 +4,7 @@ from config import BASE_DIR_STATIC, BASE_URL_PATH_RES
 import forms
 from models import db_session, User
 from forms import form_filter
-from utils import web_session, web_session_exists, existing_web_session, relative_redirect
+from utils import web_session, web_session_exists, existing_web_session, redirect
 
 @get('/', template='index.html')
 def index():
@@ -33,7 +33,6 @@ def index_post():
 		ws = web_session()
 		ws['username'] = username
 		ws['user_id'] = user.id
-		
 		relative_redirect('home')
 
 
