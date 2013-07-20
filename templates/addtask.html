@@ -1,0 +1,43 @@
+%from config import BASE_URL_PATH_RES
+%rebase template title="#Done"
+
+    %include header_logged
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <!-- <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div> -->
+
+      <!-- Example row of columns -->
+      <div class="row-fluid list-container">
+  <div class="span12 mainbox">
+    <div class="task">
+      <div class="checkbox"><div class="checkbox-inner"></div></div>
+      <div id='addtask' class="todotext" contenteditable=true ><p>Type your task here</p></div>
+      <div class="addtask btn btn-large btn-success"> Add Task </div>
+    </div>
+
+    <div class="task">
+      <div class="checkbox"><div class="checkbox-inner"></div></div>
+      <div class="todotext"><p>This is a task</p></div>
+      <div class="date"><p>22.07.2013</p></div>
+      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
+    </div>
+    <div class="task">
+      <div class="checkbox"><div class="checkbox-inner"></div></div>
+      <div class="todotext"><p>This is a task</p></div>
+      <div class="date"><p>22.07.2013</p></div>
+      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div></div>
+  </div>
+</div>
+
+
+      <footer>
+
+      </footer>
+
+    </div> <!-- /container -->
