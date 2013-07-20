@@ -9,6 +9,15 @@
 .task {
 	background-color: red;
 	margin: 20px;
+    height: 40px;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.todotext {
+    height:40px;
 }
 
 .posttask {
