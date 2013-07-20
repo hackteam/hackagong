@@ -10,7 +10,7 @@ class Reward(Base):
     __tablename__ = 'reward'
 
     id = Column(Integer, Sequence('rewards_seq', optional=True), primary_key=True)
-    TYPE_VIDEO, TYPE_TEXT = range(3)
+    TYPE_VIDEO, TYPE_TEXT = range(2)
     reward_type = Column(Integer, nullable=False, default=TYPE_VIDEO)  # class discriminator
     __mapper_args__ = {'polymorphic_on': reward_type}
 
@@ -37,4 +37,4 @@ class MMReward(Reward):
 class TextReward(Reward):
     pass
 
-    
+
