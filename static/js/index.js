@@ -46,6 +46,11 @@ window.onload = function () {
 
     console.log(1);
 
+    function showform(){
+        $(".hiddenform").animate({'height': '300px'}, 400);
+        $(".hiddenform form").fadeIn(400)
+    }
+
     $('#addtask-btn').click(function(){
         var textdata = $('#addtask').text();
         $.ajax({type:'POST',
@@ -75,5 +80,9 @@ window.onload = function () {
             
         });
     });
+
+    $('.startr').click(function(e){
+        $(this).fadeOut(200, showform);
+    })
 
 }
