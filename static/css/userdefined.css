@@ -1,0 +1,368 @@
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: #29313D;
+    font-size: 130%;
+}
+
+#addtask {
+    width:70%;
+    color:grey;
+}
+
+
+.addtask {
+    float:right;
+}
+
+.addlist {
+    float:right;
+}
+
+.addtask > input {
+    width:100%;
+}
+
+#addlist {
+    width:70%;
+    color:grey;
+}
+
+
+.addlist {
+    float:right;
+}
+
+.addlist > input {
+    width:100%;
+}
+
+.navcontainer {
+    padding: 10px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.mainbox {
+	padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.task {
+	background-color: #fff;
+	margin: 20px;
+    height: 40px;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.todotext {
+    height:40px;
+    float: left;
+}
+
+.todotext p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.posttask {
+	background-color: blue;
+    margin: 20px;
+    height: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0, 0.4)
+}
+
+.posttask p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.navbar-inverse .navbar-inner {
+    background: #fff;
+}
+
+.btn-navbar {
+    color: #000;
+}
+
+.header-links {
+    padding-top:15px;
+}
+
+.profile-link {
+    position:relative;
+    top:-10px;
+}
+.logo {
+    height: 50px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.body {
+    background: #000327;
+}
+
+.list-container {
+    background: #e5e5e4;
+    margin-top: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.checkbox {
+    height: 40px;
+    width: 40px;
+    border-right: 1px dashed #e5e5e4;
+    float: left;
+    margin-right: 20px;
+    padding-left: 0px;
+    padding-right: 10px;
+}
+
+.checkbox-inner {
+    height: 20px;
+    width: 20px;
+    margin: 8px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    border: 2px solid #e5e5e4;
+}
+
+.perkfrom {
+    float:right;
+}
+
+.perkfrom p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    color: blue;
+    color: #82368C;
+    float: left;
+}
+
+.roundpic {
+    height: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.date {
+    float: right;
+}
+
+.date p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    color: red;
+    margin-right: 10px;
+}
+
+p.name {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    margin-right: 20px;
+    color: #29313D;
+    float: left;
+}
+
+.mainbox.landing {
+    height: 565px;
+}
+
+.landingimg {
+    width: 300px;
+}
+
+.leftlanding {
+    margin-top: 60px;
+    margin-left: 40px;
+    float: left;
+}
+
+.subtitle {
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.subtitle2 {
+    margin-top: 140px;
+    font-size: 40px;
+    line-height: 50px;
+}
+
+span.purple {
+    color: #82368C;
+}
+
+.landing-btn {
+    position: relative;
+    background: #82368C;
+    height: 60px;
+    padding: 10px;
+    width: 280px;
+    float: left;
+    margin-top: 400px;
+    margin-left: 74px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    z-index:500;
+}
+
+.landing-btn:hover {
+    cursor: pointer;
+    background-image: linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -o-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -moz-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -webkit-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -ms-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.3, rgb(66,33,48)),
+    color-stop(0.83, rgb(130,54,140))
+);
+
+}
+
+.landing-btn p {
+    color: #fff;
+    line-height: 60px;
+    font-size: 45px;
+    text-align: center;
+}
+
+#landing-circle {
+    background-color: red;
+    width: 50px;
+    height:50px;
+    display:block;
+    z-index: 5;
+    position: fixed;
+    bottom:0;
+    right:0;
+    background: #82368C;
+
+}
+
+span.boldhash {
+    font-weight: bold;
+}
+
+
+.userimg {
+    height: 150px;
+    width: 150px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 75px;
+    -webkit-box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    float: left;
+}
+
+#user_name {
+    float: left;
+    margin-left: 30px;
+    font-size: 50px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.profile-third {
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.profile-third .numb {
+    font-size: 150px;
+}
+
+.profile-third .numbitem {
+    line-height: 50px;
+    font-size: 20px;
+    color: #82368C;
+}
+
+.profile-third .numbview {
+    font-size: 20px;
+    color: #29313D;
+}
+
+.navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover {
+    color: #82368C;
+}
+
+.modal {
+    background: #e5e5e4;
+}
+
+input#username, input#password {
+    width: 60%;
+    height:40px;
+    font-size: 40px;
+}
+
+.modal-body, .modal-header {
+    padding-left: 30px;
+}
+
+.modal form {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.circle {
+    z-index:1;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: 256px;
+    right: 280px;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in-out;
+    text-align: center;
+    background: rgba(125,125,125,0.5);
+    color: white;
+    border-radius: 100%;
+    padding: 20px;
+    overflow: hidden;
+    font-family: sans-serif;  /* Just 'cos */
+}
+
+div.open {
+    bottom: 256px;
+    right: 280px;
+    border-radius: 0%;
+    width: 1000px;
+    height: 1000px;
+
+}

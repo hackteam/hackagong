@@ -26,41 +26,23 @@ def setup_app():
 
     #Grab the app
     app = bottle.app()
-
-
     app.catchall = False
-    app = DebuggedApplication(app, evalex=True)
+    sess_app = SessionMiddleware(app, config.SESSION_OPTS)
 
-    return app
+    sess_app = DebuggedApplication(sess_app, evalex=True)
+
+    return sess_app
 
 
 
 application = setup_app()
 
-# @route('/static/<filename:path>')
-# def send_static(filename):
-#     return static_file(filename, root='static')
 
-@get('/')
-def index():
-    return bottle.template('index')
-
-@get('/test', template="template.html")
-def test():
-    return {}
-
-from models import User, Account
-
-@get('/hello/<name>')
-def index(name='World'):
-    dbs = db_session(close=True)
-
-    raise
 
 
 if __name__ == '__main__':
     SERVER = getattr(bottle, 'WaitressServer', bottle.AutoServer)
-    bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST, 
+    bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST,
         port=config.BIND_TO_PORT, reloader=True, debug=True)
 
 

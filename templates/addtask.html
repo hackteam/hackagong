@@ -1,0 +1,71 @@
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
+%rebase template title="#Done"
+
+%include header_logged
+
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <!-- <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+      </div> -->
+
+      <!-- Example row of columns -->
+
+
+      <div class="row-fluid list-container">
+
+  <div class="span12 mainbox">
+      %if defined('message'):
+        <h3 class="text-success">{{message}}</h3>
+      %end
+    <div id="task-add-form" class="task">
+      <div class="checkbox"><div class="checkbox-inner"></div></div>
+      <form id='addtaskform' action="" method='post'>
+        {{!form.task(class_="todotext",placeholder='type your task here')}}
+        <button id='submitButton' class="addtask btn btn-large btn-success" type="submit"> Add Task </button>
+      </form>
+    </div>
+
+     <script type="text/javascript" charset="utf-8">
+     base_dir = "{{BASE_URL_PATH_RES}}";
+     $('#addtaskform').submit(function(e) {
+     e.preventDefault();
+     var data = $(this).serializeArray();
+     $.ajax({
+     type: "POST",
+     url: "{{list_id}}",
+     data: data,
+     success: function(output) {
+      output = $.parseJSON(output);
+      html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"></div></div> <div class=\"todotext\"><p>"+output.name+"</p></div> <div class=\"date\"><p>"+output.time+"</p></div> <div class=\"perkfrom\"><p>Perk from <img class=\"roundpic\" src=\""+base_dir+"images/userimg.jpg\" /></p><p class=\"name\">Timothy</p></div></div>";
+        $("#task-add-form").after(html_out);
+     },
+     error: function(output) {
+      alert("Error!");
+     }
+     });
+     });
+     </script>
+
+
+
+    %for task in tasks:
+      <div class="task" task-id="{{task.id}}">
+        <div class="checkbox"><div class="checkbox-inner"></div></div>
+        <div class="todotext"><p>{{task.name}}</p></div>
+        <div class="date"><p>{{task.date_created}}</p></div>
+        <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
+      </div>
+    %end
+</div>
+
+
+      <footer>
+
+      </footer>
+
+    </div> <!-- /container -->

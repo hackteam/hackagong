@@ -1,0 +1,61 @@
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
+%rebase template title="#done"
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <!-- <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> -->
+          <img class='logo' src="{{BASE_URL_PATH_RES}}images/hashtagdonelogolarge.png" alt="#done" />
+          <div class="nav-collapse collapse pull-right">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Example row of columns -->
+      <div class="row-fluid list-container">
+  <div class="span12 mainbox">
+    %if defined('message'):
+      <span class="text-success">{{message}}</span>
+    %end
+    <div class="task">
+      <div class="checkbox"></div>
+      %if defined('form'):
+        <form class="form-horizontal" method="post" action="{{BASE_URL_PATH}}addtask">
+          {{!form.task(**attrs)}}
+          {{!form.description(class_="addtaskdesc",placeholder="Task Description")}}
+          <button id="addTask" name="addTask" type='submit' class="addtask btn btn-large btn-success">Add Task</button>
+        </form>
+      %end
+    </div>
+
+    <div class="task">
+      <div class="checkbox"><input type="checkbox"/></div>
+      <div class="todotext"><p>This is a task</p></div>
+      <div class="date"><p>22.07.2013</p></div>
+      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
+    </div>
+    <div class="task">
+      <div class="checkbox"><input type="checkbox"/></div>
+      <div class="todotext"><p>This is a task</p></div>
+      <div class="date"><p>22.07.2013</p></div>
+      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div></div>
+  </div>
+</div>
+
+
+      <footer>
+
+      </footer>
+
+    </div> <!-- /container -->

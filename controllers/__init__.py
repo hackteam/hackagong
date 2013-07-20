@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
 from controllers import (
-    common
+    common,
+    public,
+    user_stuff
  )
