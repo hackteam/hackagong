@@ -18,7 +18,7 @@ class Task(Base):
     todo_list_id = Column(Integer, ForeignKey('todo_list.id'))
     user_created_id = Column(Integer, ForeignKey('accounts.id'))
     user_reviewer_id = Column(Integer, ForeignKey('accounts.id'))
-    reward_id = relationship("Reward")
+    # reward_id = relationship("Reward")
 
     def __init__(self, name, creator, reviewer, reward, description=None):
         self.date_created = datetime.utcnow()

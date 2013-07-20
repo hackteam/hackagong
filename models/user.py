@@ -24,33 +24,26 @@ class Account(Base):
 
     given_name = Column(Unicode(40), nullable=False)
     family_name = Column(Unicode(40), nullable=False)
+    password = Column(Unicode(40),nullable=False)
 
     full_name = property(
         lambda self: unicode(self.given_name) + u' '
         + unicode(self.family_name),
         None)
 
-    password_hash = Column(String(60), nullable=False)
-
-    def set_password(self, password):
-        self.password_hash = hash_password(password) if password else None
-
-    password = property(None, set_password)
 
     created = Column(DateTime)
     last_login = Column(DateTime)
 
     def __init__(self, username=None,
                  given_name=None, family_name=None,
-                 password_hash=None, password=None,
+                  password=None,
                  role=USER,
                  created=None, last_login=None):
         self.username = username
         self.given_name = given_name
         self.family_name = family_name
-        self.password_hash = password_hash
-        if password:
-            self.password = password
+        self.password = password
         self.role = role
         self.created = created if created else datetime.utcnow()
         self.last_login = last_login
@@ -77,7 +70,7 @@ class User(Account):
 
     def __init__(self, username=None,
                  given_name=None, family_name=None,
-                 password_hash=None, password=None,
+                password=None,
                  created=None, last_login=None,
                  email=None, phone=None):
         super(Account, self).__init__(username=username,

@@ -21,7 +21,7 @@ class Reward(Base):
     creator = relationship('Account')
     owner_id = Column(Integer, ForeignKey('accounts.id'))
 
-    task = relationship('Task', backref='reward')
+    # task = relationship('Task')
 
 
 

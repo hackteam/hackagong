@@ -21,14 +21,18 @@ DB_NAME = 'database.sqlite3'
 DB_URL = 'sqlite:///'+path.join(BASE_DIR,DB_NAME)
 SQL_DEBUG = True
 
-#Sessions path
-#NOT CURRENTLY USED
 SESSIONS_BASE_DIR = path.join(BASE_DIR, 'sessions')
-
-#Session options
 SESSION_OPTS = {
-    'session.type': 'file',
-    'session.data_dir': path.join(SESSIONS_BASE_DIR, 'sessions'),
+    # for file/directory based sessions
+    #'session.type': 'file',
+    #'session.data_dir': path.join(SESSIONS_BASE_DIR, 'sessions'),
+    
+    # for database based sessions
+    'session.type': 'ext:database',
+    'session.url': 'sqlite:///' + path.join(SESSIONS_BASE_DIR, 'sessions.sqlite3'),
+
+    'session.lock_dir': path.join(SESSIONS_BASE_DIR, 'session_lock'),
+    
     'session.cookie_expires': True,
     'session.timeout': 30*60,   # 30 minutes (in seconds)
     'session.key': 'ldt_session',
