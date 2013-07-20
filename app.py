@@ -37,9 +37,6 @@ def setup_app():
 
 application = setup_app()
 
-# @route('/static/<filename:path>')
-# def send_static(filename):
-#     return static_file(filename, root='static')
 
 @get('/', template='index.html')
 def index():

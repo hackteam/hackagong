@@ -7,7 +7,7 @@ from common import Base, db_session
 
 
 class Account(Base):
-    ''' User '''
+    ''' Account '''
 
     __tablename__ = 'accounts'
 
