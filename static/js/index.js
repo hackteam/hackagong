@@ -23,4 +23,24 @@ window.onload = function () {
     }
     console.log(1);
 
+    $('#addtask-btn').click(function(){
+        var textdata = $('#addtask').text();
+        $.ajax({type:'POST',
+            url: '',
+            data: {user_id: null, text: textdata}
+        }).done(function(msg) {
+
+        });
+    });
+
+    $('.checkbox-inner').click(function(e){
+        var taskid = $(this).attr('id');
+        $.ajax({type:'POST',
+            url: '',
+            data: {task_id: taskid}
+        }).done(function(msg) {
+            
+        });
+    });
+
 }
