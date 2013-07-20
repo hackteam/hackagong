@@ -4,13 +4,15 @@ from config import BASE_DIR_STATIC, BASE_URL_PATH_RES
 import forms
 from models import db_session, User
 from forms import form_filter
-from utils import web_session, web_session_exists, existing_web_session, redirect
+from utils import web_session, web_session_exists, existing_web_session, redirect, delete_web_session
 import json
 
 @get('/', template='landing.html')
 def index():
     form = forms.LoginForm()
     ws = existing_web_session()
+    if (ws and 'user_id' in ws):
+        redirect('profile')
     return {
         'form':form,
         'message':'Your message would show up here.'
@@ -23,6 +25,12 @@ def lists():
 @get('/lists',template="todolists.html")
 def todolists():
     return {}
+
+@get('/logout')
+def logout():
+    delete_web_session()
+    return "Logged Out"
+
 
 
 

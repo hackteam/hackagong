@@ -22,6 +22,12 @@ def existing_web_session():
     else:
         return None
 
+def delete_web_session():
+    session = bottle.request.environ['beaker.session']
+    if session:
+        session.delete()
+        return True
+
 
 def redirect(url=''):
     bottle.redirect(BASE_URL_PATH + url)

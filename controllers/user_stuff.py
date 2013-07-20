@@ -8,7 +8,7 @@ from models import Task, User, db_session
 import forms
 import uuid
 import os
-
+import json
 
 
 @get('/addtask/<list_id>',template="addtask.html")
@@ -25,6 +25,7 @@ def addTask(list_id):
 	if tasks:
 		for count,task in enumerate(tasks):
 			attrs[count] = {'task_id':task.id}
+			task.date_created = task.date_created.strftime("%Y-%m-%d %H:%M:%S")
 
 
 	form = forms.AddTask()
@@ -46,7 +47,7 @@ def add_task(list_id):
 	dbs = db_session(close=True)
 	form = forms.AddTask()
 	post = request.POST.decode()
-	
+
 
 
 	task = Task(name=post['task'],description='',creator=ws['user_id'],reviewer=ws['user_id'])
@@ -58,24 +59,11 @@ def add_task(list_id):
 		dbs.commit()
 	except:
 		dbs.rollback()
-		return {
-			'list_id':list_id,
-			'form':form,
-			'ws':ws,
-			'message':'Something went wrong',
-			'tasks':tasks
-		}
+		return "-1"
 
-	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
+	#tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
 
-	return {
-		'list_id':list_id,
-		'form':form,
-		'ws':ws,
-		'message':'Task created',
-		'tasks':tasks
-	}
-
+	return json.dumps(task.get_details())
 
 @get('/upload',template='upload.html')
 def upload():
@@ -96,10 +84,10 @@ def upload_video():
 	form = forms.UploadForm()
 
 	new_file = post['uploaded_file']
-    
+
 	name,ext = os.path.splitext(new_file.filename)
 
-    
+
 	#Check for upload pressed with no file selected.
 	if not new_file:
 		return {
@@ -109,7 +97,7 @@ def upload_video():
 		}
 
 
-    
+
 	name = str(uuid.uuid4())
 
 
@@ -129,7 +117,7 @@ def upload_video():
 
 
 	with open(OUTPUT_PATH+'/'+name+ext, 'w') as f:
-		f.write(raw) 
+		f.write(raw)
 
 	return {
     	'message':'File saved successfully',

@@ -5,7 +5,7 @@
     <h3 id="myModalLabel">Login</h3>
   </div>
   %if defined('form'):
-  <form method="post" action="">
+  <form id="login_form" method="post" action="">
     <div class="modal-body">
       {{!form.username.label}}{{!form.username}}
       {{!form.password.label}}{{!form.password}}
@@ -27,10 +27,10 @@ $('#login_form').submit(function(e) {
     url: "/submitLogin",
     data: data,
     success: function(output) {
-      alert(output);
+      console.log(output);
     },
     error: function(output) {
-      alert(output);
+      console.log(output);
     },
     dataType: "json"
   });
