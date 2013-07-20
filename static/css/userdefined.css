@@ -5,6 +5,14 @@ body {
     font-size: 150%;
 }
 
+.addtask {
+    float:right;   
+}
+
+.addtask > input {
+    width:100%;
+}
+
 .navcontainer {
     padding: 10px;    
 }
