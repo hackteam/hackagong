@@ -4,6 +4,9 @@
 
 .mainbox {
 	padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .task {
@@ -18,10 +21,22 @@
 
 .todotext {
     height:40px;
+    float: left;
+}
+
+.todotext p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
 }
 
 .posttask {
 	background-color: blue;
+    margin: 20px;
+    height: 40px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .navbar-inverse .navbar-inner {
@@ -43,4 +58,47 @@
 .list-container {
     background: #c2c2c2;
     margin-top: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.checkbox {
+    height: 40px;
+    width: 30px;
+    border-right: 1px dashed black;
+    float: left;
+    margin-right: 20px;
+}
+
+.perkfrom {
+    float:right;
+}
+
+.perkfrom p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    color: blue;
+}
+
+.perkfrom img {
+    height: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.date {
+    float: right;
+}
+
+.date p {
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    color: blue;
+    margin-right: 10px;
 }
