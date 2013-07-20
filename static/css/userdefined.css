@@ -1,5 +1,16 @@
+body {
+    font-family: 'Pathway Gothic One', sans-serif;
+    text-shadow: none !important;
+    background-color: #29313D;
+    font-size: 150%;
+}
+
+.navcontainer {
+    padding: 10px;    
+}
+
 .navbar {
-    margin-bottom:
+    margin-bottom: 0;
 }
 
 .mainbox {
