@@ -218,6 +218,7 @@ span.purple {
 }
 
 .landing-btn {
+    position: relative;
     background: #82368C;
     height: 60px;
     padding: 10px;
@@ -228,6 +229,7 @@ span.purple {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    z-index:500;
 }
 
 .landing-btn:hover {
@@ -255,6 +257,51 @@ background-image: -webkit-gradient(
     text-align: center;
 }
 
+#landing-circle {
+    background-color: red;
+    width: 50px;
+    height:50px;
+    display:block;    
+    z-index: 5;
+    position: fixed;
+    bottom:0;
+    right:0;
+    background: #82368C;
+
+}
+
 span.boldhash {
     font-weight: bold;
 }
+
+
+
+
+div.circle {
+    z-index:1;    
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: 256px;
+    right: 280px;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-in-out;
+    text-align: center;
+    background: rgba(125,125,125,0.5);
+    color: white;
+    border-radius: 100%;
+    padding: 20px;
+    overflow: hidden;   
+    font-family: sans-serif;  /* Just 'cos */
+}
+
+div.open {
+    bottom: 256px;
+    right: 280px;
+    border-radius: 0%;
+    width: 1000px;
+    height: 1000px;
+
+}
+
