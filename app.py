@@ -12,7 +12,7 @@ from werkzeug.debug import DebuggedApplication
 import warnings
 
 def setup_app():
-	#Add templates path -- more to come?
+    #Add templates path -- more to come?
     bottle.TEMPLATE_PATH.insert(0, path.join(config.BASE_DIR, 'templates'))
 
     bottle.debug(True)
@@ -20,7 +20,7 @@ def setup_app():
     #Change errors to warnings
     warnings.simplefilter('error')
 
-	#Grab the app
+    #Grab the app
     app = bottle.app()
 
 
@@ -44,5 +44,6 @@ if __name__ == '__main__':
     SERVER = getattr(bottle, 'WaitressServer', bottle.AutoServer)
     bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST, 
         port=config.BIND_TO_PORT, reloader=True, debug=True)
+
 
 
