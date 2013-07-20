@@ -41,21 +41,10 @@ application = setup_app()
 # def send_static(filename):
 #     return static_file(filename, root='static')
 
-@get('/')
+@get('/', template='index.html')
 def index():
-    return bottle.template('index')
-
-@get('/test', template="template.html")
-def test():
     return {}
 
-from models import User, Account
-
-@get('/hello/<name>')
-def index(name='World'):
-    dbs = db_session(close=True)
-
-    raise
 
 
 if __name__ == '__main__':
