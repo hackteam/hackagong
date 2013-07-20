@@ -45,9 +45,9 @@ application = setup_app()
 def index():
     return bottle.template('index')
 
-@get('/test')
+@get('/test', template="template.html")
 def test():
-    return bottle.template('test')
+    return {}
 
 from models import User, Account
 
