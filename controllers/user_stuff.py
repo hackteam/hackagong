@@ -6,19 +6,31 @@ from controllers.common import logged_in_only
 from models import Task, User, db_session
 import forms
 
-@get('/home',template='home.html')
-def home():
-	'''User overview page'''
-	form = forms.AddTask()
-	ws = existing_web_session()
 
-	raise
+@get('/addtask/<list_id>',template="addtask.html")
+def addTask(list_id):
+
+	ws = existing_web_session()
+	ws['user_id'] = 1
+	dbs = db_session(close=True)
+	attrs = {}
+
+
+	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
+	if tasks:
+		for count,task in enumerate(tasks):
+			attrs[count] = {'task_id':task.id}
+
+
+	form = forms.AddTask()
+
 	return {
-		'ws':ws,
-		'form':form
+		'attrs':attrs,
+		'form':form,
+		'ws':ws
 	}
 
-@post('/addtask',template='home.html')
+@post('/addtask',template='addtask.html')
 @logged_in_only
 def add_task():
 	'''Add task for the current user'''

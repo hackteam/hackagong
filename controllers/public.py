@@ -24,9 +24,6 @@ def todolists():
 	return {}
 
 
-@get('/addtask',template="addtask.html")
-def addTask():
-	return {}
 
 @post('/sumbitLogin')
 def doLogin():
@@ -46,7 +43,7 @@ def doLogin():
 		ws = web_session()
 		ws['username'] = username
 		ws['user_id'] = user.id
-		redirect('home')
+		redirect('profile')
 
 
 	return {

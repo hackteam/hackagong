@@ -32,7 +32,7 @@
       <div class="checkbox"></div>
       %if defined('form'):
         <form class="form-horizontal" method="post" action="{{BASE_URL_PATH}}addtask">
-          {{!form.task(extra-attr="123",class_="todotext",placeholder="New task name")}}
+          {{!form.task(**attrs)}}
           {{!form.description(class_="addtaskdesc",placeholder="Task Description")}}
           <button id="addTask" name="addTask" type='submit' class="addtask btn btn-large btn-success">Add Task</button>
         </form>
