@@ -16,7 +16,12 @@ BASE_HOST_URL = 'http://' + PUBLIC_HOST
 BASE_URL_PATH_RES = BASE_URL_PATH + 'static/'
 FULL_BASE_URL = BASE_HOST_URL + BASE_URL_PATH
 
+#Models and shit
+DB_NAME = 'database.db'
+SQL_DEBUG = True
+
 #Sessions path
+#NOT CURRENTLY USED
 SESSIONS_BASE_DIR = path.join(BASE_DIR, 'sessions')
 
 #Session options
