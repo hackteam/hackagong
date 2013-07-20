@@ -85,4 +85,13 @@ window.onload = function () {
         $(this).fadeOut(200, showform);
     })
 
+    function showform(){
+        $(".hiddenform").animate({'height': '300px'}, 400);
+        $(".hiddenform form").fadeIn(400)
+    }
+
+    $('.startr').click(function(e){
+        $(this).fadeOut(200, showform);
+    })
+
 }
