@@ -3,6 +3,7 @@ from os import path
 
 import bottle
 from bottle import get
+from bottle import route, static_file
 from beaker.middleware import SessionMiddleware
 import models
 import controllers
@@ -33,6 +34,17 @@ def setup_app():
 
 application = setup_app()
 
+# @route('/static/<filename:path>')
+# def send_static(filename):
+#     return static_file(filename, root='static')
+
+@get('/')
+def test():
+    return bottle.template('index')
+
+@get('/test')
+def test():
+    return bottle.template('test')
 
 @get('/hello/<name>')
 def index(name='World'):
