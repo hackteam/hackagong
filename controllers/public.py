@@ -56,7 +56,7 @@ def doLogin():
         ws = web_session()
         ws['username'] = username
         ws['user_id'] = user.id
-        return "hello"
+        return "success"
         #return json.dumps({"output" : "success"})
 
 
