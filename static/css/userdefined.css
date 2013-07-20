@@ -303,3 +303,22 @@ span.boldhash {
 .navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover {
     color: #82368C;
 }
+
+.modal {
+    background: #e5e5e4;
+}
+
+input#username, input#password {
+    width: 60%;
+    height:40px;
+    font-size: 40px;
+}
+
+.modal-body, .modal-header {
+    padding-left: 30px;
+}
+
+.modal form {
+    padding: 0px;
+    margin: 0px;
+}
