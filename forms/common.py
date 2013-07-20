@@ -28,8 +28,11 @@ def form_filter(form, keys, strip=True):
 class LoginForm(Form):
 	username = TextField(u'User name:',
         [Required(), Length(min=2, max=30)])
+
 	password = PasswordField(u'Password:',
 		[Required(), Length(min=2, max=30)])
+
+
 
 class RegisterForm(Form):
 	username = TextField(u'User name:',
@@ -38,5 +41,5 @@ class RegisterForm(Form):
 		[Required()])
 
 class AddTask(Form):
-	task = TextField(u'Add Task')
-	description = TextField(u'Task Description')
+    task = TextField()
+    description = TextField(u'Task Description')

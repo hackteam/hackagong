@@ -16,6 +16,11 @@
       <div class="row-fluid list-container">
   <div class="span12 mainbox">
     <div class="task">
+      %if defined('attrs') and attrs:
+        %for count in sorted(attrs.keys()):
+          {{!form.task(**attrs[count])}}
+        %end
+      %end
       <div class="checkbox"><div class="checkbox-inner"></div></div>
       <div id='addtask' class="todotext" contenteditable=true ><p>Type your task here</p></div>
       <div class="addtask btn btn-large btn-success"> Add Task </div>

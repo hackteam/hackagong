@@ -16,9 +16,6 @@ def index():
     }
 
 
-@get('/addtask',template="addtask.html")
-def addTask():
-	return {}
 
 @post('/',template='index.html')
 def index_post():
@@ -38,7 +35,7 @@ def index_post():
 		ws = web_session()
 		ws['username'] = username
 		ws['user_id'] = user.id
-		redirect('home')
+		redirect('profile')
 
 
 	return {
