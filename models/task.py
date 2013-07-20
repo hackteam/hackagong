@@ -4,8 +4,7 @@ from sqlalchemy import Column, ForeignKey, Sequence, \
 from sqlalchemy.orm import relationship, backref
 
 from common import Base, db_session
-import datetime
-
+from datetime import datetime
 class Task(Base):
     __tablename__ = "tasks"
 
@@ -20,7 +19,7 @@ class Task(Base):
     user_reviewer_id = Column(Integer, ForeignKey('users.id'))
     # reward_id = relationship("Reward")
 
-    def __init__(self, name, creator, reviewer, reward, description=None):
+    def __init__(self, name, creator, reviewer, reward=None, description=None):
         self.date_created = datetime.utcnow()
         self.name = name
         self.description = description

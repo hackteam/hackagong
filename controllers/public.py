@@ -33,7 +33,7 @@ def index_post():
 		ws = web_session()
 		ws['username'] = username
 		ws['user_id'] = user.id
-		relative_redirect('home')
+		redirect('home')
 
 
 	return {

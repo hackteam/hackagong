@@ -36,3 +36,7 @@ class RegisterForm(Form):
         [Required(), Length(min=2, max=30)])
 	password = PasswordField(u'Password:',
 		[Required()])
+
+class AddTask(Form):
+	task = TextField(u'Add Task')
+	description = TextField(u'Task Description')
