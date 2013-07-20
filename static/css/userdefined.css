@@ -6,7 +6,7 @@ body {
 }
 
 .addtask {
-    float:right;   
+    float:right;
 }
 
 .addtask > input {
@@ -14,7 +14,7 @@ body {
 }
 
 .navcontainer {
-    padding: 10px;    
+    padding: 10px;
 }
 
 .navbar {
@@ -74,8 +74,18 @@ body {
     color: #000;
 }
 
+.header-links {
+    padding-top:15px;
+}
+
+.profile-link {
+    position:relative;
+    top:-5px;
+}
 .logo {
     height: 50px;
+    padding-top:10px;
+    padding-bottom: 10px;
 }
 
 .body {
