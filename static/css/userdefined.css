@@ -299,3 +299,7 @@ span.boldhash {
     font-size: 20px;
     color: #29313D;
 }
+
+.navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover {
+    color: #82368C;
+}
