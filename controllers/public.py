@@ -19,6 +19,10 @@ def index():
 def landing():
 	return {}
 
+@get('/addtask',template="addtask.html")
+def addTask():
+	return {}
+
 @post('/',template='index.html')
 def index_post():
 	'''Login'''
