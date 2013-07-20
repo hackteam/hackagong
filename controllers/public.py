@@ -4,7 +4,7 @@ from config import BASE_DIR_STATIC, BASE_URL_PATH_RES
 import forms
 from models import db_session, User
 from forms import form_filter
-from utils import web_session, web_session_exists, existing_web_session
+from utils import web_session, web_session_exists, existing_web_session, relative_redirect
 
 @get('/', template='index.html')
 def index():
@@ -30,16 +30,18 @@ def index_post():
 
 
 	if user and user.password == password:
-		return {
-			'form':form,
-			'message':'Successfully logged in'
-		}
+		ws = web_session()
+		ws['username'] = username
+		ws['user_id'] = user.id
+		
+		relative_redirect('home')
 
 
 	return {
 		'form':form,
 		'message':'Username or password incorrect'
 	}
+
 
 @get('/register',template='register.html')
 def register():
@@ -69,8 +71,6 @@ def register_post():
 			'error':'Username already in use',
 			'form':form
 		}
-
-	
 
 
 	fd = form_filter(form.data, [

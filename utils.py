@@ -1,4 +1,5 @@
 import bottle
+from config import BASE_URL_PATH
 
 def web_session_exists():
     ''' Return whether there is a web session active (from Beaker middleware).
@@ -20,3 +21,7 @@ def existing_web_session():
         return web_session()
     else:
         return None
+
+
+def redirect(url=''):
+    bottle.redirect(BASE_URL_PATH + url)
