@@ -14,7 +14,25 @@ body {
     float:right;
 }
 
+.addlist {
+    float:right;
+}
+
 .addtask > input {
+    width:100%;
+}
+
+#addlist {
+    width:70%;
+    color:grey;
+}
+
+
+.addlist {
+    float:right;
+}
+
+.addlist > input {
     width:100%;
 }
 
@@ -214,6 +232,20 @@ span.purple {
 
 .landing-btn:hover {
     cursor: pointer;
+    background-image: linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -o-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -moz-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -webkit-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -ms-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.3, rgb(66,33,48)),
+    color-stop(0.83, rgb(130,54,140))
+);
+
 }
 
 .landing-btn p {
@@ -225,4 +257,45 @@ span.purple {
 
 span.boldhash {
     font-weight: bold;
+}
+
+.userimg {
+    height: 150px;
+    width: 150px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 75px;
+    -webkit-box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    box-shadow:  3px 3px 3px 0px rgba(0, 0, 0, 0.4);
+    float: left;
+}
+
+#user_name {
+    float: left;
+    margin-left: 30px;
+    font-size: 50px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.profile-third {
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.profile-third .numb {
+    font-size: 150px;
+}
+
+.profile-third .numbitem {
+    line-height: 50px;
+    font-size: 20px;
+    color: #82368C;
+}
+
+.profile-third .numbview {
+    font-size: 20px;
+    color: #29313D;
 }
