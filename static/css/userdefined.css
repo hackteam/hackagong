@@ -1,39 +1,25 @@
 body {
-    font-family: 'Pathway Gothic One', sans-serif;
-    text-shadow: none !important;
+    font-family: 'Muli', sans-serif;
     background-color: #29313D;
-    font-size: 150%;
+    font-size: 130%;
 }
 
-input[type=text],
-input[type=text]:hover,
-input[type=text]:focus,
-input[type=text]:active
-{
-    border: 0;
-    outline: none;
-    outline-offset: 0;
+#addtask {
+    width:70%;
+    color:grey;
 }
+
 
 .addtask {
-    float:right;   
+    float:right;
 }
 
 .addtask > input {
     width:100%;
-    border:0;
-    outline:none;
-    outline-offset:0;
 }
 
-.addtaskdesc > input {
-    border:0;
-    outline:none;
-    outline-offset:0;
-
-}
 .navcontainer {
-    padding: 10px;    
+    padding: 10px;
 }
 
 .navbar {
@@ -93,8 +79,18 @@ input[type=text]:active
     color: #000;
 }
 
+.header-links {
+    padding-top:15px;
+}
+
+.profile-link {
+    position:relative;
+    top:-5px;
+}
 .logo {
     height: 50px;
+    padding-top:10px;
+    padding-bottom: 10px;
 }
 
 .body {
@@ -107,6 +103,7 @@ input[type=text]:active
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    margin-bottom: 40px;
 }
 
 .checkbox {
@@ -116,10 +113,18 @@ input[type=text]:active
     float: left;
     margin-right: 20px;
     padding-left: 0px;
+    padding-right: 10px;
 }
 
-.checkbox input[type=checkbox] {
-    margin: 13px;
+.checkbox-inner {
+    height: 20px;
+    width: 20px;
+    margin: 8px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    border: 2px solid #e5e5e4;
 }
 
 .perkfrom {
@@ -163,4 +168,61 @@ p.name {
     margin-right: 20px;
     color: #29313D;
     float: left;
+}
+
+.mainbox.landing {
+    height: 565px;
+}
+
+.landingimg {
+    width: 300px;
+}
+
+.leftlanding {
+    margin-top: 60px;
+    margin-left: 40px;
+    float: left;
+}
+
+.subtitle {
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.subtitle2 {
+    margin-top: 140px;
+    font-size: 40px;
+    line-height: 50px;
+}
+
+span.purple {
+    color: #82368C;
+}
+
+.landing-btn {
+    background: #82368C;
+    height: 60px;
+    padding: 10px;
+    width: 280px;
+    float: left;
+    margin-top: 400px;
+    margin-left: 74px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.landing-btn:hover {
+    cursor: pointer;
+}
+
+.landing-btn p {
+    color: #fff;
+    line-height: 60px;
+    font-size: 45px;
+    text-align: center;
+}
+
+span.boldhash {
+    font-weight: bold;
 }

@@ -15,6 +15,10 @@ def index():
     	'message':'Your message would show up here.'
     }
 
+@get('/landing',template="landing.html")
+def landing():
+	return {}
+
 @post('/',template='index.html')
 def index_post():
 	'''Login'''

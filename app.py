@@ -29,8 +29,6 @@ def setup_app():
     app.catchall = False
     sess_app = SessionMiddleware(app, config.SESSION_OPTS)
 
-
-
     sess_app = DebuggedApplication(sess_app, evalex=True)
 
     return sess_app
@@ -44,7 +42,7 @@ application = setup_app()
 
 if __name__ == '__main__':
     SERVER = getattr(bottle, 'WaitressServer', bottle.AutoServer)
-    bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST, 
+    bottle.run(app=application, server=SERVER,host=config.BIND_TO_HOST,
         port=config.BIND_TO_PORT, reloader=True, debug=True)
 
 
