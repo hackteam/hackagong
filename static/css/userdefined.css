@@ -232,6 +232,20 @@ span.purple {
 
 .landing-btn:hover {
     cursor: pointer;
+    background-image: linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -o-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -moz-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -webkit-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+background-image: -ms-linear-gradient(bottom, rgb(66,33,48) 30%, rgb(130,54,140) 83%);
+
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.3, rgb(66,33,48)),
+    color-stop(0.83, rgb(130,54,140))
+);
+
 }
 
 .landing-btn p {
