@@ -49,6 +49,10 @@ def index():
 def index():
     return bottle.template('landing')
 
+@get('/lists')
+def index():
+    return bottle.template('todolists')
+
 @get('/test', template="template.html")
 def test():
     return {}
