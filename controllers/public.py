@@ -20,8 +20,8 @@ def index():
 def addTask():
 	return {}
 
-@post('/',template='index.html')
-def index_post():
+@post('/sumbitLogin')
+def doLogin():
 	'''Login'''
 
 	post = request.POST.decode()
