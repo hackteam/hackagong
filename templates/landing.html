@@ -4,24 +4,23 @@
 %include header_unlogged
 
     <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <!-- <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div> -->
-
-      <!-- Example row of columns -->
       <div class="row-fluid list-container">
-  <div class="span12 mainbox landing" style="background-image: url('{{BASE_URL_PATH_RES}}images/landingPageBackground.png');">
-  <div class="leftlanding">
-  <img class="landingimg" src="{{BASE_URL_PATH_RES}}images/hashtagdonelogo.png" alt="#done" />
-  <p class="subtitle">The Social To-Do List</p>
-  <p class="subtitle2">CROWD-SOURCE <br/> <span class="purple">MOTIVATION</span> FROM <br/> <span class="purple">FRIENDS</span> &amp; <span class="purple">LOVED ONES</span></p>
-  </div>
-  <div class="landing-btn"><p>get it <span class="boldhash">#done</span></p></div>
+  <div class="span12 mainbox landing" style="z-index:-1">
 
+  <div class="bglayer" style="position:absolute; z-index:0; width:1200px; height:800px; background: url('{{BASE_URL_PATH_RES}}images/langbg0.png') no-repeat; background-position: -20px -20px">
+    
+    <div class="circle" style="background: url('{{BASE_URL_PATH_RES}}images/langbg1.png') no-repeat; background-position: right bottom"></div>
+    
+  </div>
+
+  <div class="upmask" style="position:absolute; z-index:5">
+    <div class="leftlanding"> 
+        <img class="landingimg" src="{{BASE_URL_PATH_RES}}images/hashtagdonelogo.png" alt="#done" />
+        <p class="subtitle">The Social To-Do List</p>
+        <p class="subtitle2">CROWD-SOURCE <br/> <span class="purple">MOTIVATION</span> FROM <br/> <span class="purple">FRIENDS</span> &amp; <span class="purple">LOVED ONES</span></p>
+    </div>
+    <div class="landing-btn"><p>get it <span class="boldhash">#done</span></p></div>  
+  </div>
 </div>
 
 
@@ -30,4 +29,6 @@
 %include signup_modal
       </footer>
 
-    </div> <!-- /container -->
+    </div>
+  
+     <!-- /container -->

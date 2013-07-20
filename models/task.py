@@ -41,3 +41,6 @@ class Task(Base):
         self.date_cancelled = datetime.utcnow()
         return self.id
 
+    def get_details(self):
+        return {'id':self.id,'name':self.name,'time':self.date_created.strftime("%Y-%m-%d %H:%M:%S")}
+

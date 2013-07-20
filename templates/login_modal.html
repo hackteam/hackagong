@@ -5,7 +5,7 @@
     <h3 id="myModalLabel">Login</h3>
   </div>
   %if defined('form'):
-  <form method="post" action="">
+  <form id="login_form" method="post" action="">
     <div class="modal-body">
       {{!form.username.label}}{{!form.username}}
       {{!form.password.label}}{{!form.password}}
@@ -17,3 +17,22 @@
   </form>
   %end
 </div>
+
+<script type="text/javascript" charset="utf-8">
+$('#login_form').submit(function(e) {
+  e.preventDefault();
+  var data = $(this).serializeArray();
+  $.ajax({
+    type: "POST",
+    url: "/submitLogin",
+    data: data,
+    success: function(output) {
+      console.log(output);
+    },
+    error: function(output) {
+      console.log(output);
+    },
+    dataType: "json"
+  });
+});
+</script>
