@@ -22,6 +22,20 @@ body {
     width:100%;
 }
 
+#addlist {
+    width:70%;
+    color:grey;
+}
+
+
+.addlist {
+    float:right;
+}
+
+.addlist > input {
+    width:100%;
+}
+
 .navcontainer {
     padding: 10px;
 }
