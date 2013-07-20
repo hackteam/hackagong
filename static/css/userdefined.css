@@ -1,13 +1,14 @@
 body {
     font-family: 'Muli', sans-serif;
     background-color: #29313D;
-    font-size: 150%;
+    font-size: 130%;
 }
 
 #addtask {
     width:70%;
     color:grey;
 }
+
 
 .addtask {
     float:right;   
