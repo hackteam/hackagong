@@ -22,6 +22,10 @@ def index():
 def lists():
     return {}
 
+@get('/about',template="about.html")
+def about():
+	return {}
+
 @get('/lists',template="todolists.html")
 def todolists():
     return {}
