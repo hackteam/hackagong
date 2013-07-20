@@ -28,11 +28,16 @@ $('#login_form').submit(function(e) {
     data: data,
     success: function(output) {
       console.log(output);
+      if (output == 'success') {
+        window.location = '';
+      } else {
+        alert('Login info incorrect');
+      }
     },
     error: function(output) {
+      alert('error: please refresh');
       console.log(output);
-    },
-    dataType: "json"
+    }
   });
 });
 </script>
