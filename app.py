@@ -37,9 +37,12 @@ def setup_app():
 
 application = setup_app()
 
+# @route('/static/<filename:path>')
+# def send_static(filename):
+#     return static_file(filename, root='static')
 
 @get('/')
-def test():
+def index():
     return bottle.template('index')
 
 @get('/test')
