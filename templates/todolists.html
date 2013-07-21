@@ -1,13 +1,11 @@
 %from config import BASE_URL_PATH_RES, BASE_URL_PATH
 %rebase template title="#done"
 
-%include header_logged
-
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <img class='logo' src="{{BASE_URL_PATH_RES}}images/hashtagdonelogolarge.png" alt="#done" />
-          %include header_logged
+          %include header_logged ws=ws
         </div>
       </div>
     </div>
