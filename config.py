@@ -15,6 +15,7 @@ BASE_DIR_STATIC = path.join(BASE_DIR, 'static')
 BASE_HOST_URL = 'http://' + PUBLIC_HOST
 BASE_URL_PATH_RES = BASE_URL_PATH + 'static/'
 FULL_BASE_URL = BASE_HOST_URL + BASE_URL_PATH
+VIDEO_PATH = path.join(BASE_DIR,'vids')
 
 #Models and shit
 DB_NAME = 'database.sqlite3'

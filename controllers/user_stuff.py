@@ -4,19 +4,22 @@ import config
 from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, BASE_DIR
 from utils import redirect, existing_web_session
 from controllers.common import logged_in_only
-from models import Task, User, db_session, Todo
+from models import Task, User, db_session, Todo, VideoReward
 import forms
 import uuid
 import os
 import json
 import cgi
+import shlex
+from subprocess import check_call, check_output, Popen
+from subprocess import PIPE, STDOUT
+
 
 @get('/profile',template="profile.html")
 def profile():
     '''Show profile overview page'''
-
     ws = existing_web_session()
-    
+
     return {
         'ws':ws
     }
@@ -70,10 +73,6 @@ def todolists_post():
 
 
 
-
-
-
-
 @get('/addtask/<list_id>',template="addtask.html")
 @logged_in_only
 def addTask(list_id):
@@ -83,6 +82,11 @@ def addTask(list_id):
     dbs = db_session(close=True)
     attrs = {}
 
+    if not dbs.query(Todo).filter(Todo.id==list_id).all():
+        return {
+            'message':'This is not the list you are looking for.',
+            'ws':ws
+        }
 
 
     tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id).all()
@@ -111,6 +115,12 @@ def add_task(list_id):
     dbs = db_session(close=True)
     form = forms.AddTask()
     post = request.POST.decode()
+
+    if not dbs.query(Todo).filter(Todo.id==list_id).all():
+        return {
+            'message':'This is not the list you are looking for.',
+            'ws':ws
+        }
 
     task_name = cgi.escape(post['task'])
 
@@ -148,11 +158,13 @@ def upload_video():
     post = request.POST.decode()
     ws = existing_web_session()
     form = forms.UploadForm()
+    dbs = db_session(close=True)
+
+    vid_types = ('.mp4','.wmv','.mov','.m4v')
+    img_types = ('.jpg','.png','.gif')
+
 
     new_file = post['uploaded_file']
-
-    name,ext = os.path.splitext(new_file.filename)
-
 
     #Check for upload pressed with no file selected.
     if not new_file:
@@ -163,11 +175,14 @@ def upload_video():
         }
 
 
+    name,ext = os.path.splitext(new_file.filename)
+
+
 
     name = str(uuid.uuid4())
 
 
-    OUTPUT_PATH = os.path.join(config.BASE_DIR,'vids')
+    OUTPUT_PATH = config.VIDEO_PATH
 
     if not os.path.exists(OUTPUT_PATH):
         os.makedirs(OUTPUT_PATH)
@@ -182,11 +197,72 @@ def upload_video():
             raw+=chunk
 
 
+    file_saved = False
     with open(OUTPUT_PATH+'/'+name+ext, 'w') as f:
         f.write(raw)
+        file_saved = True
+
+
+    #Check extension and decide on tpye of reward to create
+    if ext in vid_types:
+        encode = encode_video(name+ext)
+        reward = VideoReward(name='New Video Reward!', owner_id=ws['user_id'])
+        reward.set_reward_values(media_url=name)
+
+    elif ext in img_types:
+        reward = ImageReward(name='New Image Reward!', owner_id=ws['user_id'])
+        reward.set_reward_values(media_url=name+ext)
+
+    else:
+        return {
+            'message':'Invalid format :(',
+            'ws':ws
+        }
+
+    dbs.add(reward)
+
+    try:
+        dbs.commit()
+    except:
+        return {
+            'ws':ws,
+            'message':'Something went wrong :(' 
+        }
+
 
     return {
         'message':'File saved successfully',
         'ws':ws,
         'form':form
     }
+
+
+def encode_video(filename):
+    ws = existing_web_session()
+    dest = os.path.join(config.VIDEO_PATH,'completed/')
+    vid = config.VIDEO_PATH+"/"+filename
+
+    if not os.path.exists(dest):
+        os.makedirs(dest)
+
+    name,ext = os.path.splitext(filename)
+
+
+    dest=dest+name
+
+    encode_mp4 = 'ffmpeg -i "%s" -vcodec libx264 -movflags faststart "%s.mp4"' % (vid,dest)
+    encode_mp4 = shlex.split(encode_mp4)
+
+
+    encode_webm = 'ffmpeg -i "%s" -vcodec libvpx -codec:a libvorbis -f webm "%s.webm"' %(vid,dest)
+    encode_webm = shlex.split(encode_webm)
+
+
+    try:    
+        call = check_call(encode_mp4, stderr=STDOUT)
+        call = check_call(encode_webm, stderr=STDOUT)
+    except:
+        return False
+
+    else:
+        return True
