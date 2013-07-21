@@ -2,7 +2,7 @@
 %rebase template title="#Done"
 
 %include header_unlogged
-    
+
     <div class="container">
     <div class="row-fluid list-container">
 
@@ -18,9 +18,9 @@
         <div class="span4"><img class="third-cent" src="{{BASE_URL_PATH_RES}}images/no1-icon.png" /><div style="clear:both"></div><div class="third-text" >Create your to-do list and #done 'pushes' it to social media for you</div></div>
         <div class="span4"><img class="third-cent" src="{{BASE_URL_PATH_RES}}images/no2-icon.png" /><div style="clear:both"></div><div class="third-text" >Your friends leave you video, text and image perks, which you get as a reward when you're done</div></div>
         <div class="span4"><img class="third-cent" src="{{BASE_URL_PATH_RES}}images/no3-icon.png" /><div style="clear:both"></div><div class="third-text" >You complete the task (faster now that you're backed by your mates)... and enjoy the perks!</div></div>
-        
+
       </div>
-      
+
     </div>
     <div class="whitewrapper">
     <img src="{{BASE_URL_PATH_RES}}images/hashtagdonelogolarge.png" /> <br />
@@ -36,7 +36,8 @@
 the day in record time.</div></div>
       </div>
     </div>
-
+    %include login_modal form=login_form,message=message
+    %include signup_modal form=reg_form,message=message
 
 </div>
 </div>

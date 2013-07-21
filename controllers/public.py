@@ -26,7 +26,16 @@ def index():
 
 @get('/about',template="about.html")
 def about():
-	return {}
+    login_form = forms.LoginForm()
+    reg_form = forms.RegisterForm()
+    ws = existing_web_session()
+
+    return {
+        'login_form':login_form,
+        'reg_form':reg_form,
+        'message':'Your message would show up here.',
+        'ws':ws
+    }
 
 
 
@@ -116,7 +125,7 @@ def register_post():
             return "fail"
 
 def login(username, password):
-    
+
     dbs = db_session(close=True)
     user = dbs.query(User).filter(User.username == username).first()
 
