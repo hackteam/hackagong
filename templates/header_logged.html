@@ -1,6 +1,8 @@
 %from config import BASE_URL_PATH_RES, BASE_URL_PATH
 %rebase template title="#Done"
+%from utils import existing_web_session
 
+%ws = existing_web_session()
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">

@@ -18,15 +18,6 @@ from subprocess import PIPE, STDOUT
 
 import datetime
 
-@get('/profile',template="profile.html")
-def profile():
-    '''Show profile overview page'''
-    ws = existing_web_session()
-
-    return {
-        'ws':ws
-    }
-
 @get('/reward/video/<video_id>',template='watch_video.html')
 def watch_vid(video_id):
     ws = existing_web_session()
@@ -281,7 +272,30 @@ def encode_video(filename):
 @logged_in_only
 def profile():
     ws = existing_web_session()
-    return {'ws':ws, 'num_lists':5, 'num_tasks': 15, 'num_perks': 2}
+    dbs = db_session(close=True)
+
+    num_lists = len(dbs.query(Todo).filter(
+        Todo.owner_id == ws['user_id']).all())
+
+    num_tasks = len(dbs.query(Task).filter(
+        Task.user_created_id == ws['user_id']).all())
+
+    return {
+        'ws':ws, 
+        'num_lists':num_lists, 
+        'num_tasks': num_tasks, 
+        'num_perks': 2}
+
+@get('/perks',template='perks.html')
+@logged_in_only
+def view_perks():
+    ws = existing_web_session()
+    dbs = db_session(close=True)
+
+    
+    return {
+        'ws':ws
+    }
 
 @post('/finishtask/<task_id>')
 @logged_in_only
