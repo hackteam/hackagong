@@ -54,17 +54,17 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    padding-bottom: 40px;
 }
 
 .task {
 	background-color: #fff;
-	margin: 20px;
+	margin: 20px 0px 20px 0px;
     height: 40px;
     padding: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    position: relative;
 }
 
 .todotext {
