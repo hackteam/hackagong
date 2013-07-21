@@ -12,7 +12,7 @@ import json
 import cgi
 import datetime
 
-@get('/lists/<list_id>',template="addtask.html")
+@get('/addtask/<list_id>',template="addtask.html")
 @logged_in_only
 def addTask(list_id):
 
