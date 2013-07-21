@@ -1,5 +1,6 @@
 .aboutmb {
     background: #fff;
+}
 
 .about-intro {
     font-family: 'Raleway', sans-serif;
@@ -20,8 +21,8 @@
 }
 
 .section2 {
-    height: 421px;
     background: #82368C;
+    padding-bottom: 50px;
 }
 
 .section1 .howitworks {
@@ -31,7 +32,7 @@
     position: absolute;
     margin-top: 50px;
     font-weight: 700;
-    font-size: 27px;
+    font-size: 30px;
     text-align: center;
     color: #ffde00;
     font-family: 'Raleway', sans-serif;
@@ -54,6 +55,7 @@
     line-height: 30px;
     font-size: 20px;
     font-weight: 200;
+    text-align: center;
 }
 
 .arr1 {
@@ -88,9 +90,11 @@
 }
 
 .third-title {
-    color: #f0ad60;
+    color: #ffde00;
     text-align: center;
     padding: 10px;
+    padding-top: 30px;
+    font-size: 30px;
 }
 
 .startr {
@@ -118,6 +122,26 @@
     font-size: 40px;
 }
 
-.greywrapper {
-    background: #e5e5e4;
+.whitewrapper {
+    background: #fff;
+    height: 300px;
+    text-align: center;
+    padding-top: 40px; 
+    font-family: font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.picrow {
+    padding-top: 50px;
+}
+
+.whitewrapper img {
+    width: 300px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.whitewrapper .bigcta {
+    margin-top: 10px;
 }

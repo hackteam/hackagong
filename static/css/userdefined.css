@@ -252,7 +252,7 @@ background-image: -webkit-gradient(
 
 }
 
-.landing-btn p {
+.landing-btn p.txtbtn {
     color: #fff;
     line-height: 60px;
     font-size: 45px;
@@ -391,9 +391,15 @@ div.open {
     height:2px;
     color:#9D9D9C;
 }
-=======
+
 .tick {
     height: 20px;
     width: 20px;
     display: none;
+}
+
+.bigcta {
+    line-height: 50px;
+    font-size: 30px;
+    height: 50px;
 }
