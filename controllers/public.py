@@ -35,7 +35,7 @@ def todolists():
 @get('/logout')
 def logout():
     delete_web_session()
-    return "Logged Out"
+    redirect("")
 
 
 
@@ -45,8 +45,6 @@ def doLogin():
     '''Login'''
 
     post = request.POST.decode()
-
-    form = forms.LoginForm(post)
     dbs = db_session(close=True)
 
     username = post['username'].strip()
@@ -58,21 +56,18 @@ def doLogin():
         ws = web_session()
         ws['username'] = username
         ws['user_id'] = user.id
+        ws['profile_picture'] = user.picture
         return "success"
         #return json.dumps({"output" : "success"})
 
 
     return "fail"
-    #return json.dumps({
-    #   'form':form,
-    #   'message':'Username or password incorrect'
-    #})
 
 
 
 @post('/register',template='register.html')
 def register_post():
-
+    ws = web_session()
     post = request.POST.decode()
 
     form = forms.RegisterForm(post)
@@ -83,7 +78,6 @@ def register_post():
     #Check if username exists
     username = post['username'].strip()
     user = dbs.query(User).filter(User.username == username).first()
-
 
     if user:
         return {
@@ -111,13 +105,14 @@ def register_post():
 
 
     else:
+        ws['profile_picture'] = user.picture
         if login(post['username'].strip(), post['password']) == 'success':
             return "success"
         else:
             return "fail"
 
 def login(username, password):
-    
+
     dbs = db_session(close=True)
     user = dbs.query(User).filter(User.username == username).first()
 

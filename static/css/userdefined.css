@@ -372,3 +372,21 @@ div.open {
     text-align: center;
     font-size: 30px;
 }
+
+.footer-top {
+    font-size: 14px;
+    color:#9D9D9C;
+    text-align: center;
+}
+
+.footer-bottom {
+    font-size: 24px;
+    color:#833289;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hor-line {
+    height:2px;
+    color:#9D9D9C;
+}
