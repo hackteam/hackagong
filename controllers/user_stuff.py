@@ -9,6 +9,7 @@ import forms
 import uuid
 import os
 import json
+import datetime
 
 
 @get('/addtask/<list_id>',template="addtask.html")
@@ -21,7 +22,7 @@ def addTask(list_id):
 	attrs = {}
 
 
-	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
+	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.date_completed == None).all()
 	if tasks:
 		for count,task in enumerate(tasks):
 			attrs[count] = {'task_id':task.id}
@@ -124,3 +125,25 @@ def upload_video():
     	'ws':ws,
     	'form':form
     }
+
+
+@post('/finishtask/<task_id>')
+@logged_in_only
+def finish_task(task_id):
+	'''Finish task for the current user'''
+
+	ws = existing_web_session()
+	dbs = db_session(close=True)
+	post = request.POST.decode()
+
+	dbs.query(Task).filter_by(id = post['task_id']).update({"date_completed": datetime.datetime.now()})
+
+	try:
+		dbs.commit()
+	except:
+		dbs.rollback()
+		return "-1"
+
+	#tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
+
+	return 'success'

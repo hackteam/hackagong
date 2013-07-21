@@ -68,15 +68,32 @@ window.onload = function () {
         });
     });
 
-    $('.checkbox-inner').click(function(e){
-        var taskid = $(this).attr('id');
-        $.ajax({type:'POST',
-            url: '',
-            data: {task_id: taskid}
-        }).done(function(msg) {
+    function swishy(elem) {
+        elem.find(".tick").css({display: "inline-block"});
+    }
 
+        $('.mainbox').on('click','.checkbox',function(e){
+            console.log("Clicked");
+            var taskid = $(this).parent().attr('task-id');
+            var elem = $(this);
+            $.ajax({type:'POST',
+                url: '/finishtask/' + taskid,
+                data: {task_id: taskid},
+                success: function(output) {
+                  console.log(output);
+                  if (output == 'success') {
+                    elem.find(".tick").css({display: "inline-block"});
+                    elem.parent().animate({width: 0}, 500, function(){ $(this).slideUp(200) })
+                  } else {
+                    alert('Login info incorrect');
+                  }
+                },
+                error: function(output) {
+                  alert('error: please refresh');
+                  console.log(output);
+                }
+            });
         });
-    });
 
     $('.startr').click(function(e){
         $(this).fadeOut(200, showform);

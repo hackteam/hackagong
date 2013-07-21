@@ -59,6 +59,7 @@ body {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    position: relative;
 }
 
 .todotext {
@@ -325,9 +326,9 @@ span.boldhash {
 }
 
 input#username, input#password {
-    width: 60%;
+    width: 90%;
     height:40px;
-    font-size: 40px;
+    font-size: 25px;
 }
 
 .modal-body, .modal-header {
@@ -365,4 +366,10 @@ div.open {
     width: 1000px;
     height: 1000px;
 
+}
+
+.tick {
+    height: 20px;
+    width: 20px;
+    display: none;
 }
