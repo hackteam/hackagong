@@ -10,6 +10,7 @@ import uuid
 import os
 import json
 import cgi
+import datetime
 
 @get('/lists/<list_id>',template="addtask.html")
 @logged_in_only
@@ -21,12 +22,12 @@ def addTask(list_id):
     attrs = {}
 
 
-    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id).all()
+
+    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.date_completed == None).all()
     if tasks:
         for count,task in enumerate(tasks):
             attrs[count] = {'task_id':task.id}
             task.date_created = task.date_created.strftime("%Y-%m-%d %H:%M:%S")
-
 
     form = forms.AddTask()
 
@@ -45,7 +46,6 @@ def add_task(list_id):
 
     ws = existing_web_session()
     dbs = db_session(close=True)
-    form = forms.AddTask()
     post = request.POST.decode()
 
     task_name = cgi.escape(post['task'])
@@ -130,3 +130,20 @@ def upload_video():
 def profile():
     ws = existing_web_session()
     return {'ws':ws, 'num_lists':5, 'num_tasks': 15, 'num_perks': 2}
+
+@post('/finishtask/<task_id>')
+@logged_in_only
+def finish_task(task_id):
+    '''Finish task for the current user'''
+
+    dbs = db_session(close=True)
+    post = request.POST.decode()
+
+    dbs.query(Task).filter_by(id = post['task_id']).update({"date_completed": datetime.datetime.now()})
+
+    try:
+        dbs.commit()
+    except:
+        dbs.rollback()
+        return "-1"
+    return 'success'
