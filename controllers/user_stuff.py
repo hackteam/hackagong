@@ -94,7 +94,7 @@ def addTask(list_id):
         }
 
 
-    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id).all()
+    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id, Task.date_completed == None).all()
 
     if tasks:
         for count,task in enumerate(tasks):
@@ -103,7 +103,7 @@ def addTask(list_id):
     form = forms.AddTask()
     return {
         'list_id':list_id,
-        'list_name':list_obj.name,
+        'list_name':list_obj.pop().name,
         'tasks':tasks,
         'attrs':attrs,
         'form':form,
