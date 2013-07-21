@@ -10,10 +10,13 @@ import uuid
 import os
 import json
 import cgi
+
 import shlex
 from subprocess import check_call, check_output, Popen
 from subprocess import PIPE, STDOUT
 
+
+import datetime
 
 @get('/profile',template="profile.html")
 def profile():
@@ -77,7 +80,7 @@ def todolists_post():
     except:
         dbs.rollback()
         return "-1"
-    
+
     return json.dumps(todo.get_details())
 
 
@@ -91,6 +94,7 @@ def addTask(list_id):
     dbs = db_session(close=True)
     attrs = {}
 
+
     if not dbs.query(Todo).filter(Todo.id==list_id).all():
         return {
             'message':'This is not the list you are looking for.',
@@ -99,14 +103,12 @@ def addTask(list_id):
 
 
     tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id).all()
+
     if tasks:
         for count,task in enumerate(tasks):
             attrs[count] = {'task_id':task.id}
             task.date_created = task.date_created.strftime("%Y-%m-%d %H:%M:%S")
-
-
     form = forms.AddTask()
-
     return {
         'list_id':list_id,
         'tasks':tasks,
@@ -274,3 +276,26 @@ def encode_video(filename):
 
     else:
         return True
+
+@get('/profile',template="profile.html")
+@logged_in_only
+def profile():
+    ws = existing_web_session()
+    return {'ws':ws, 'num_lists':5, 'num_tasks': 15, 'num_perks': 2}
+
+@post('/finishtask/<task_id>')
+@logged_in_only
+def finish_task(task_id):
+    '''Finish task for the current user'''
+
+    dbs = db_session(close=True)
+    post = request.POST.decode()
+
+    dbs.query(Task).filter_by(id = post['task_id']).update({"date_completed": datetime.datetime.now()})
+
+    try:
+        dbs.commit()
+    except:
+        dbs.rollback()
+        return "-1"
+    return 'success'

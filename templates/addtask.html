@@ -1,7 +1,7 @@
 %from config import BASE_URL_PATH_RES, BASE_URL_PATH
 %rebase template title="#Done"
 
-%include header_logged
+%include header_logged ws=ws
 
 
     <div class="container">
@@ -22,6 +22,7 @@
       %if defined('message'):
         <h3 class="text-success">{{message}}</h3>
       %end
+      <h3 class="list-header">TODAY'S TODOLIST</h3>
     <div id="task-add-form" class="task">
       <div class="checkbox"><div class="checkbox-inner"></div></div>
       <form id='addtaskform' action="" method='post'>
@@ -41,7 +42,7 @@
      data: data,
      success: function(output) {
       output = $.parseJSON(output);
-      html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"></div></div> <div class=\"todotext\"><p>"+output.name+"</p></div> <div class=\"date\"><p>"+output.time+"</p></div> <div class=\"perkfrom\"><p>Perk from <img class=\"roundpic\" src=\""+base_dir+"images/userimg.jpg\" /></p><p class=\"name\">Timothy</p></div></div>";
+      html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"><img class=\"tick\" src=\"{{BASE_URL_PATH_RES}}images/tick.png\" /></div></div> <div class=\"todotext\"><p>"+output.name+"</p></div> <div class=\"date\"><p>"+output.time+"</p></div> <div class=\"perkfrom\"><p>Perk from <img class=\"roundpic\" src=\""+base_dir+"images/userimg.jpg\" /></p><p class=\"name\">Timothy</p></div></div>";
         $("#task-add-form").after(html_out);
      },
      error: function(output) {
@@ -55,7 +56,7 @@
 
     %for task in tasks:
       <div class="task" task-id="{{task.id}}">
-        <div class="checkbox"><div class="checkbox-inner"></div></div>
+        <div class="checkbox"><div class="checkbox-inner"><img class="tick" src="{{BASE_URL_PATH_RES}}images/tick.png" /></div></div>
         <div class="todotext"><p>{{task.name}}</p></div>
         <div class="date"><p>{{task.date_created}}</p></div>
         <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>

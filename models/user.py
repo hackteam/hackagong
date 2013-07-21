@@ -1,4 +1,4 @@
-import sqlalchemy
+import sqlalchemy, random
 from sqlalchemy import Column, ForeignKey, Sequence, \
     Integer, String, Boolean, DateTime, Unicode
 from sqlalchemy.orm import relationship, backref
@@ -15,7 +15,7 @@ class User(Base):
     password = Column(Unicode(40),nullable=False)
     name = Column(String(100), default=None)
     email = Column(String(100), default=None)
-
+    picture = Column(String(20), default=None)
 
     created = Column(DateTime)
     last_login = Column(DateTime)
@@ -27,6 +27,7 @@ class User(Base):
         self.password = password
         self.created = datetime.utcnow()
         self.last_login = last_login
+        self.picture = "profile_picture_%s.png" %(random.randint(1,4))
 
     def set_details(self,username=None,password=None,name=None,email=None):
         if (username):
