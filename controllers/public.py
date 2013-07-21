@@ -12,6 +12,7 @@ def index():
     login_form = forms.LoginForm()
     reg_form = forms.RegisterForm()
     ws = existing_web_session()
+    
     if (ws and 'user_id' in ws):
         redirect('profile')
     return {
@@ -20,17 +21,13 @@ def index():
         'message':'Your message would show up here.'
     }
 
-@get('/profile',template="profile.html")
-def lists():
-    return {}
+
 
 @get('/about',template="about.html")
 def about():
 	return {}
 
-@get('/lists',template="todolists.html")
-def todolists():
-    return {}
+
 
 @get('/logout')
 def logout():

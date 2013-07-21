@@ -1,5 +1,7 @@
-%from config import BASE_URL_PATH_RES
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
 %rebase template title="#done"
+
+%include header_logged
 
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -23,33 +25,57 @@
 
     <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <!-- <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div> -->
+
           
       <!-- Example row of columns -->
       <div class="row-fluid list-container">
   <div class="span12 mainbox">
-    <div class="task">
-      <div class="checkbox"><div class="checkbox-inner"></div></div>
-      <div id='addlist' class="todotext" contenteditable=true ><p>Type the name of your list here</p></div>
-      <div id='addlist-btn' class="addlist btn btn-large btn-success"> New List </div>
-    </div>
+    %if not defined('todo_lists'):
+      <p class="lead text-info">{{message}}</p>
+    %end
 
+    <!--New Todo List-->
+    %if defined('form'):
     <div class="task">
       <div class="checkbox"><div class="checkbox-inner"></div></div>
-      <div class="todotext"><p>This is a task</p></div>
-      <div class="date"><p>22.07.2013</p></div>
-      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
-    </div>
-    <div class="task">
-      <div class="checkbox"><div class="checkbox-inner"></div></div>
-      <div class="todotext"><p>This is a task</p></div>
-      <div class="date"><p>22.07.2013</p></div>
-      <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div></div>
+      <form id='addtodo' action="" method='post'>
+        {{!form.todo_list(class_="todotext",placeholder='What should we name it?')}}
+        <button id='addlist-btn' class="addlist-btn btn btn-large btn-success" type="submit">New List</button>
+      </form>
+    %end
+
+    <script type="text/javascript" charset="utf-8">
+       base_dir = "{{BASE_URL_PATH_RES}}";
+       $('#addtodo').submit(function(e) {
+       e.preventDefault();
+       var data = $(this).serializeArray();
+       $.ajax({
+       type: "POST",
+       url: "{{BASE_URL_PATH}}lists",
+       data: data,
+       success: function(output) {
+        output = $.parseJSON(output);
+        html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"></div></div> <div class=\"todotext\"><a href=\"{{BASE_URL_PATH}}addtask/"+output.id+"\">"+output.name+"</a>"+"</div> <div class=\"date\"><p>"+output.time+"</p></div> <div class=\"perkfrom\"><p>Perk from <img class=\"roundpic\" src=\""+base_dir+"images/userimg.jpg\" /></p><p class=\"name\">Timothy</p></div></div>";
+          $("#addtodo").after(html_out);
+       },
+       error: function(output) {
+        alert("Error!");
+       }
+       });
+       });
+     </script>
+
+
+    %if defined('todo_lists'):
+      %for list in todo_lists:
+        <div class="task">
+          <div class="checkbox"><div class="checkbox-inner"></div></div>
+          <div class="todotext"><p><a href="{{BASE_URL_PATH}}addtask/{{list.id}}">{{list.name}}</a></p></div>
+          <div class="date"><p>{{list.created}}</p></div>
+          <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
+        </div>
+      %end
+    %end
   </div>
 </div>
 
