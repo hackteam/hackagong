@@ -1,0 +1,33 @@
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
+%rebase template title="#Done"
+
+%include header_logged
+
+
+    <div class="container">
+
+
+
+      <div class="row-fluid list-container">
+
+  <div class="span12 mainbox">
+      %if defined('message'):
+        <h3 class="text-success">{{message}}</h3>
+      %end
+      <div style="width:650px;margin-left:auto;margin-right:auto">
+      <video width="640" height="480" poster="{{BASE_URL_PATH_RES}}images/poster.png" controls="controls" preload="auto">
+          <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
+          <source type="video/mp4" src="{{BASE_URL_PATH}}video/{{video_id}}.mp4" />
+          <!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
+          <source type="video/webm" src="{{BASE_URL_PATH}}video/{{video_id}}.webm" />
+      </video>
+    
+    </div>
+</div>
+
+
+      <footer>
+
+      </footer>
+
+    </div> <!-- /container -->

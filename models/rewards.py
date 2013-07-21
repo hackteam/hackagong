@@ -3,7 +3,8 @@
 from common import Base
 from sqlalchemy import Column, Sequence, Unicode, UnicodeText, Integer, Boolean, DateTime, ForeignKey, String
 from sqlalchemy.orm import relationship
-import datetime
+from datetime import datetime
+
 
 class Reward(Base):
     ''' Reward '''
@@ -17,7 +18,7 @@ class Reward(Base):
     media_url = Column(String(400));
     media_length = Column(Integer);
 
-    TYPE_VIDEO, TYPE_MUSIC, TYPE_TEXT = range(3)
+    TYPE_VIDEO, TYPE_IMAGE, TYPE_MUSIC, TYPE_TEXT = range(4)
     reward_type = Column(Integer, nullable=False, default=TYPE_TEXT)  # class discriminator
     __mapper_args__ = {'polymorphic_on': reward_type}
     created_time = Column(DateTime)
@@ -28,7 +29,7 @@ class Reward(Base):
 #    creator = relationship('Account')
 #    owner_id = Column(Integer, ForeignKey('accounts.id'))
 #    task = relationship('Task')
-    creator = relationship('User')
+    creator = relationship('User',backref='reward')
     owner_id = Column(Integer, ForeignKey('users.id'))
 
 
@@ -37,7 +38,6 @@ class Reward(Base):
         self.created_time = datetime.utcnow()
         self.owner_id = owner_id
         self.name=name
-        return id
 
     def set_reward_values(self, text=None,media_url=None,media_length=None):
         if (text==None and media_url==None and media_length==None):
@@ -50,15 +50,29 @@ class Reward(Base):
             self.media_length = media_length
         return self.id
 
-#class Video_Reward(Reward):
 
-#    def __init__(self,name,)
-#    pass
+class VideoReward(Reward):
+    __tablename__ = 'video_rewards'
+    __mapper_args__ = {'polymorphic_identity': Reward.TYPE_VIDEO}
+    id = Column(Integer, ForeignKey('reward.id'), primary_key=True)
 
-class Music_Reward(Reward):
-    pass
+
+
+class MusicReward(Reward):
+    __tablename__ = 'music_rewards'
+    __mapper_args__ = {'polymorphic_identity': Reward.TYPE_MUSIC}
+    id = Column(Integer, ForeignKey('reward.id'), primary_key=True)
+
 
 class TextReward(Reward):
-    pass
+    __tablename__ = 'text_rewards'
+    __mapper_args__ = {'polymorphic_identity': Reward.TYPE_TEXT}
+    id = Column(Integer, ForeignKey('reward.id'), primary_key=True)
 
+
+
+class ImageReward(Reward):
+    __tablename__ = 'image_rewards'
+    __mapper_args__ = {'polymorphic_identity': Reward.TYPE_IMAGE}
+    id = Column(Integer, ForeignKey('reward.id'), primary_key=True)
 

@@ -4,4 +4,8 @@ env/*
 sessions/*.sqlite3
 =======
 /vids
+<<<<<<< HEAD
+/img
+=======
 >>>>>>> tyler_working
+>>>>>>> master
