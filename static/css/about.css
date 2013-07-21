@@ -1,30 +1,28 @@
-body {
-    background-color: #fff;
-}
-
-.navbar-inverse .navbar-inner {
-    border-bottom-color: #fff;
+.aboutmb {
+    background: #fff;
 }
 
 .about-intro {
     font-family: 'Raleway', sans-serif;
-    margin-top: 100px;
     font-size: 22px;
     line-height: 34px;
+    padding: 50px 50px 0px 50px;
 }
 
 .cent {
     text-align: center;
-    margin-top: 30px;
+    margin-top: -10px;
+    margin-bottom: 40px;
 }
 
 .section1 {
     height: 421px;
+    background: #82368C;
 }
 
 .section2 {
     height: 421px;
-    margin-top: -80px;
+    background: #82368C;
 }
 
 .section1 .howitworks {
@@ -33,6 +31,11 @@ body {
     left: 50%;
     position: absolute;
     margin-top: 50px;
+    font-weight: 700;
+    font-size: 27px;
+    text-align: center;
+    color: #ffde00;
+    font-family: 'Raleway', sans-serif;
 }
 
 .third-cent {
