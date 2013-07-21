@@ -86,7 +86,8 @@ def addTask(list_id):
     attrs = {}
 
 
-    if not dbs.query(Todo).filter(Todo.id==list_id).all():
+    list_obj = dbs.query(Todo).filter(Todo.id==list_id).all()
+    if not list_obj:
         return {
             'message':'This is not the list you are looking for.',
             'ws':ws
@@ -102,6 +103,7 @@ def addTask(list_id):
     form = forms.AddTask()
     return {
         'list_id':list_id,
+        'list_name':list_obj.name,
         'tasks':tasks,
         'attrs':attrs,
         'form':form,
@@ -227,7 +229,7 @@ def upload_video():
     except:
         return {
             'ws':ws,
-            'message':'Something went wrong :(' 
+            'message':'Something went wrong :('
         }
 
 
@@ -259,7 +261,7 @@ def encode_video(filename):
     encode_webm = shlex.split(encode_webm)
 
 
-    try:    
+    try:
         call = check_call(encode_mp4, stderr=STDOUT)
         call = check_call(encode_webm, stderr=STDOUT)
     except:
@@ -281,9 +283,9 @@ def profile():
         Task.user_created_id == ws['user_id']).all())
 
     return {
-        'ws':ws, 
-        'num_lists':num_lists, 
-        'num_tasks': num_tasks, 
+        'ws':ws,
+        'num_lists':num_lists,
+        'num_tasks': num_tasks,
         'num_perks': 2}
 
 @get('/perks',template='perks.html')
@@ -292,7 +294,7 @@ def view_perks():
     ws = existing_web_session()
     dbs = db_session(close=True)
 
-    
+
     return {
         'ws':ws
     }
