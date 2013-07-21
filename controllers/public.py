@@ -33,7 +33,7 @@ def about():
 @get('/logout')
 def logout():
     delete_web_session()
-    return "Logged Out"
+    redirect()
 
 
 
@@ -56,6 +56,7 @@ def doLogin():
         ws = web_session()
         ws['username'] = username
         ws['user_id'] = user.id
+        ws['profile_picture'] = user.picture
         return "success"
         #return json.dumps({"output" : "success"})
 
@@ -124,6 +125,8 @@ def login(username, password):
         ws = web_session()
         ws['username'] = username
         ws['user_id'] = user.id
+        ws['profile_picture'] = user.picture
+
         return "success"
 
     return "fail"
