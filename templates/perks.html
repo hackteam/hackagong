@@ -11,9 +11,20 @@
 
       <div class="row-fluid list-container">
 
+
   <div class="span12 mainbox">
+      <h1>Perks</h1>
       %if defined('message'):
         <h3 class="text-success">{{message}}</h3>
+      %end
+
+      %if defined('video_rewards') and video_rewards:
+        %for video in video_rewards:
+          <a href="{{BASE_URL_PATH}}reward/video/{{video.media_url}}">New video reward!</a>
+        %end
+
+      %else:
+        <p class="lead text-info">No video rewards :(</p
       %end
 
 </div>

@@ -4,7 +4,7 @@ import config
 from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, BASE_DIR
 from utils import redirect, existing_web_session
 from controllers.common import logged_in_only
-from models import Task, User, db_session, Todo, VideoReward, ImageReward
+from models import Task, User, db_session, Todo, VideoReward, ImageReward, Reward
 import forms
 import uuid
 import os
@@ -280,11 +280,13 @@ def profile():
     num_tasks = len(dbs.query(Task).filter(
         Task.user_created_id == ws['user_id']).all())
 
+    num_perks = len(dbs.query(Reward).filter(
+        Reward.owner_id == ws['user_id']).all())
     return {
         'ws':ws, 
         'num_lists':num_lists, 
         'num_tasks': num_tasks, 
-        'num_perks': 2}
+        'num_perks': num_perks}
 
 @get('/perks',template='perks.html')
 @logged_in_only
@@ -292,9 +294,13 @@ def view_perks():
     ws = existing_web_session()
     dbs = db_session(close=True)
 
-    
+    video_rewards = dbs.query(VideoReward).filter(VideoReward.owner_id == ws['user_id']).all()
+
+
+
     return {
-        'ws':ws
+        'ws':ws,
+        'video_rewards':video_rewards
     }
 
 @post('/finishtask/<task_id>')
