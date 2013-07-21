@@ -9,7 +9,7 @@ import forms
 import uuid
 import os
 import json
-
+import cgi
 
 @get('/addtask/<list_id>',template="addtask.html")
 @logged_in_only
@@ -21,7 +21,7 @@ def addTask(list_id):
 	attrs = {}
 
 
-	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id']).all()
+	tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.todo_list_id == list_id).all()
 	if tasks:
 		for count,task in enumerate(tasks):
 			attrs[count] = {'task_id':task.id}
@@ -48,9 +48,9 @@ def add_task(list_id):
 	form = forms.AddTask()
 	post = request.POST.decode()
 
+	task_name = cgi.escape(post['task'])
 
-
-	task = Task(name=post['task'],description='',creator=ws['user_id'],reviewer=ws['user_id'])
+	task = Task(name=task_name,description='',todo_list_id=list_id, creator=ws['user_id'],reviewer=ws['user_id'])
 
 
 	dbs.add(task)

@@ -19,13 +19,15 @@ class Task(Base):
     user_reviewer_id = Column(Integer, ForeignKey('users.id'))
     # reward_id = relationship("Reward")
 
-    def __init__(self, name, creator, reviewer, reward=None, description=None):
+    def __init__(self, name, creator, reviewer, reward=None, description=None, todo_list_id=None):
         self.date_created = datetime.utcnow()
         self.name = name
         self.description = description
         self.user_created_id = creator
         self.user_reviewer_id = reviewer
         self.reward_id = reward
+        self.todo_list_id = todo_list_id
+
         return self.id
 
     def complete_task(self):
