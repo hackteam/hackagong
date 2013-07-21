@@ -1,0 +1,26 @@
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
+%from utils import existing_web_session
+%rebase template title="#Done"
+%ws = existing_web_session()
+%include header_logged
+
+
+    <div class="container">
+
+
+
+      <div class="row-fluid list-container">
+
+  <div class="span12 mainbox">
+      %if defined('message'):
+        <h3 class="text-success">{{message}}</h3>
+      %end
+
+</div>
+
+
+      <footer>
+
+      </footer>
+
+    </div> <!-- /container -->
