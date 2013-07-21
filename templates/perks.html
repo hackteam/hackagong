@@ -13,21 +13,36 @@
 
 
   <div class="span12 mainbox">
-      <h1>Perks</h1>
-      %if defined('message'):
-        <h3 class="text-success">{{message}}</h3>
-      %end
+        <p class="text-success">Perk from Frank</p>
+        <p class="well"><em>Great job on that project! Here's two movie tickets for you:</em>
+          <a href="#">View attachment</a>
+        </p>
+
+      <h2>Video Perks</h2>
 
       %if defined('video_rewards') and video_rewards:
         %for video in video_rewards:
-          <a href="{{BASE_URL_PATH}}reward/video/{{video.media_url}}">New video reward!</a>
+        <p class="well">
+          <a href="{{BASE_URL_PATH}}reward/video/{{video.media_url}}">New video reward!</a></p> 
         %end
 
       %else:
-        <p class="lead text-info">No video rewards :(</p
+        <p class="lead text-info">No video rewards :(</p>
       %end
 
-</div>
+      %if defined('image_rewards') and image_rewards:
+        <h2>Image Rewards</h2>
+        %for image in image_rewards:
+          <div class="row text-center">
+            <img src="{{BASE_URL_PATH}}img/{{image.media_url}}" class="img-polaroid" style="width:640px;height:480px;"/>
+          </div>
+        %end
+      %else:
+        <p class="lead text-info">No image rewards :(</p>
+      %end
+
+
+  </div>
 
 
       <footer>

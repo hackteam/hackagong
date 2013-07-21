@@ -294,13 +294,18 @@ def view_perks():
     ws = existing_web_session()
     dbs = db_session(close=True)
 
-    video_rewards = dbs.query(VideoReward).filter(VideoReward.owner_id == ws['user_id']).all()
+    video_rewards = dbs.query(VideoReward).filter(
+        VideoReward.owner_id == ws['user_id']).all()
+
+    image_rewards = dbs.query(ImageReward).filter(
+        ImageReward.owner_id == ws['user_id']).all()
 
 
 
     return {
         'ws':ws,
-        'video_rewards':video_rewards
+        'video_rewards':video_rewards,
+        'image_rewards':image_rewards
     }
 
 @post('/finishtask/<task_id>')
@@ -309,10 +314,11 @@ def finish_task(task_id):
     '''Finish task for the current user'''
 
     dbs = db_session(close=True)
+    
     post = request.POST.decode()
+    task = dbs.query(Task).filter(Task.id == post['task_id']).first()
 
-    dbs.query(Task).filter_by(id = post['task_id']).update({"date_completed": datetime.datetime.now()})
-
+    task.date_completed = datetime.datetime.utcnow()
     try:
         dbs.commit()
     except:

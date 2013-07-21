@@ -1,7 +1,7 @@
 import functools
 import bottle
 from bottle import get, view, static_file, request, response, route, abort
-from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, VIDEO_PATH
+from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, VIDEO_PATH, IMAGE_PATH
 from utils import existing_web_session, web_session_exists, redirect
 import os
 
@@ -34,3 +34,7 @@ def send_static(filename):
 def watch(filename):
     return static_file(filename, root=os.path.join(VIDEO_PATH,'completed'))
 
+@route('/img/<filename>')
+@logged_in_only
+def img(filename):
+    return static_file(filename, root=IMAGE_PATH)
