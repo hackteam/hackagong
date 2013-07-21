@@ -21,10 +21,11 @@
     <!--New Todo List-->
     %if defined('form'):
     <div class="task">
-      <div class="checkbox"><div class="checkbox-inner"></div></div>
+      <div class="checkbox"></div>
       <form id='addtodo' action="" method='post'>
-        {{!form.todo_list(class_="todotext",placeholder='What should we name it?')}}
+        {{!form.todo_list(class_="todotext",placeholder='What should we name it?', maxlength=40)}}
         <button id='addlist-btn' class="addlist-btn btn btn-large btn-success" type="submit">New List</button>
+        <div style="clear:both"></div>
       </form>
     %end
 
@@ -39,7 +40,7 @@
        data: data,
        success: function(output) {
         output = $.parseJSON(output);
-        html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"></div></div> <div class=\"todotext\"><a href=\"{{BASE_URL_PATH}}addtask/"+output.id+"\">"+output.name+"</a>"+"</div> <div class=\"date\"><p>"+output.time+"</p></div> <div class=\"perkfrom\"><p>Perk from <img class=\"roundpic\" src=\""+base_dir+"images/userimg.jpg\" /></p><p class=\"name\">Timothy</p></div></div>";
+        html_out = "<div class=\"task\" task-id=\""+output.id+"\"> <div class=\"checkbox\"><div class=\"checkbox-inner\"></div></div> <div class=\"todotext\"><p><a href=\"{{BASE_URL_PATH}}addtask/"+output.id+"\">"+output.name+"</a></p>"+"</div> </div>";
           $("#addtodo").after(html_out);
        },
        error: function(output) {
@@ -55,8 +56,6 @@
         <div class="task">
           <div class="checkbox"><div class="checkbox-inner"></div></div>
           <div class="todotext"><p><a href="{{BASE_URL_PATH}}addtask/{{list.id}}">{{list.name}}</a></p></div>
-          <div class="date"><p>{{list.created}}</p></div>
-          <div class="perkfrom"><p>Perk from <img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" /></p><p class="name">Timothy</p></div>
         </div>
       %end
     %end

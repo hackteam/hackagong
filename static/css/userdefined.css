@@ -18,6 +18,10 @@ body {
     float:right;
 }
 
+.addlist-btn {
+    float:right;
+}
+
 .addtask > input {
     width:100%;
 }
@@ -402,4 +406,14 @@ div.open {
     line-height: 50px;
     font-size: 30px;
     height: 50px;
+}
+
+input#task {
+    height: 30px;
+    width: 600px;
+}
+
+input#todo_list {
+    height: 30px;
+    width: 600px;
 }
