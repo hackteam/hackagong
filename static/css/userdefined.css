@@ -30,6 +30,7 @@ body {
 
 .addlist {
     float:right;
+    margin-right:10px;
 }
 
 .addlist > input {
@@ -365,4 +366,9 @@ div.open {
     width: 1000px;
     height: 1000px;
 
+}
+
+.list-header {
+    text-align: center;
+    font-size: 30px;
 }
