@@ -4,7 +4,7 @@ import config
 from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, BASE_DIR
 from utils import redirect, existing_web_session
 from controllers.common import logged_in_only
-from models import Task, User, db_session, Todo, VideoReward
+from models import Task, User, db_session, Todo, VideoReward, ImageReward
 import forms
 import uuid
 import os
@@ -22,6 +22,15 @@ def profile():
 
     return {
         'ws':ws
+    }
+
+@get('/reward/video/<video_id>',template='watch_video.html')
+def watch_vid(video_id):
+    ws = existing_web_session()
+
+    return {
+        'ws':ws,
+        'video_id':video_id
     }
 
 @get('/lists',template="todolists.html")
@@ -182,7 +191,10 @@ def upload_video():
     name = str(uuid.uuid4())
 
 
-    OUTPUT_PATH = config.VIDEO_PATH
+    if ext in vid_types:
+        OUTPUT_PATH = config.VIDEO_PATH
+    elif ext in img_types:
+        OUTPUT_PATH = config.IMAGE_PATH
 
     if not os.path.exists(OUTPUT_PATH):
         os.makedirs(OUTPUT_PATH)
@@ -196,12 +208,8 @@ def upload_video():
                 break
             raw+=chunk
 
-
-    file_saved = False
     with open(OUTPUT_PATH+'/'+name+ext, 'w') as f:
         f.write(raw)
-        file_saved = True
-
 
     #Check extension and decide on tpye of reward to create
     if ext in vid_types:

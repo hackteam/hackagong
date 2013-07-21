@@ -16,6 +16,7 @@ BASE_HOST_URL = 'http://' + PUBLIC_HOST
 BASE_URL_PATH_RES = BASE_URL_PATH + 'static/'
 FULL_BASE_URL = BASE_HOST_URL + BASE_URL_PATH
 VIDEO_PATH = path.join(BASE_DIR,'vids')
+IMAGE_PATH = path.join(BASE_DIR,'img')
 
 #Models and shit
 DB_NAME = 'database.sqlite3'
@@ -24,11 +25,7 @@ SQL_DEBUG = True
 
 SESSIONS_BASE_DIR = path.join(BASE_DIR, 'sessions')
 SESSION_OPTS = {
-    # for file/directory based sessions
-    #'session.type': 'file',
-    #'session.data_dir': path.join(SESSIONS_BASE_DIR, 'sessions'),
-    
-    # for database based sessions
+
     'session.type': 'ext:database',
     'session.url': 'sqlite:///' + path.join(SESSIONS_BASE_DIR, 'sessions.sqlite3'),
 
