@@ -1,4 +1,4 @@
-%from config import BASE_URL_PATH_RES
+%from config import BASE_URL_PATH_RES, BASE_URL_PATH
 %rebase template title="#Done"
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -10,7 +10,7 @@
 
               <li class="header-links active"><a href="#work">Work</a></li>
               <li class="header-links"><a href="#perks">Perks</a></li>
-              <li class="profile-link header-links"><a href="#me"><img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" alt="me">Me</a></li>
+              <li class="profile-link header-links"><a href="{{BASE_URL_PATH}}profile"><img class="roundpic" src="{{BASE_URL_PATH_RES}}images/userimg.jpg" alt="me">Me</a></li>
             </ul>
             </div><!--/.nav-collapse -->
         </div>

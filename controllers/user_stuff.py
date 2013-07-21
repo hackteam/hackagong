@@ -4,7 +4,7 @@ import config
 from config import BASE_DIR_STATIC, BASE_URL_PATH_RES, BASE_DIR
 from utils import redirect, existing_web_session
 from controllers.common import logged_in_only
-from models import Task, User, db_session
+from models import Task, User, db_session, Todo
 import forms
 import uuid
 import os
@@ -12,25 +12,83 @@ import json
 import cgi
 import datetime
 
+@get('/profile',template="profile.html")
+def profile():
+    '''Show profile overview page'''
+
+    ws = existing_web_session()
+
+    return {
+        'ws':ws
+    }
+
+@get('/lists',template="todolists.html")
+@logged_in_only
+def todolists():
+    '''Show all todo lists'''
+    dbs = db_session(close=True)
+    ws = existing_web_session()
+
+    form = forms.AddTodo()
+
+    todo_lists = dbs.query(Todo).filter(Todo.owner_id == ws['user_id']).all()
+
+    if not todo_lists:
+        return {
+            'form':form,
+            'ws':ws,
+            'message':'You don\'t have any lists yet :('
+        }
+
+    return {
+        'form':form,
+        'todo_lists':todo_lists,
+        'ws':ws
+    }
+
+@post('/lists', template="todolists.html")
+@logged_in_only
+def todolists_post():
+    '''Process add new list request'''
+    ws = existing_web_session()
+    dbs = db_session(close=True)
+    post = request.POST.decode()
+    form = forms.AddTodo()
+
+    todo_name = cgi.escape(post['todo_list'])
+
+    todo = Todo(owner_id=ws['user_id'], name=todo_name)
+
+    dbs.add(todo)
+
+    try:
+        dbs.commit()
+    except:
+        dbs.rollback()
+        return "-1"
+
+    return json.dumps(todo.get_details())
+
+
+
+
+
+
+
 @get('/addtask/<list_id>',template="addtask.html")
 @logged_in_only
 def addTask(list_id):
+    '''Show a specific list'''
 
     ws = existing_web_session()
-    ws['user_id'] = 1
     dbs = db_session(close=True)
     attrs = {}
-
-
-
-    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.date_completed == None).all()
+    tasks = dbs.query(Task).filter(Task.user_created_id == ws['user_id'], Task.date_completed == None, Task.todo_list_id == list_id).all()
     if tasks:
         for count,task in enumerate(tasks):
             attrs[count] = {'task_id':task.id}
             task.date_created = task.date_created.strftime("%Y-%m-%d %H:%M:%S")
-
     form = forms.AddTask()
-
     return {
         'list_id':list_id,
         'tasks':tasks,
@@ -46,6 +104,7 @@ def add_task(list_id):
 
     ws = existing_web_session()
     dbs = db_session(close=True)
+    form = forms.AddTask()
     post = request.POST.decode()
 
     task_name = cgi.escape(post['task'])
@@ -66,6 +125,7 @@ def add_task(list_id):
     return json.dumps(task.get_details())
 
 @get('/upload',template='upload.html')
+@logged_in_only
 def upload():
     ws = existing_web_session()
 
@@ -78,6 +138,7 @@ def upload():
     }
 
 @post('/upload',template='upload.html')
+@logged_in_only
 def upload_video():
     post = request.POST.decode()
     ws = existing_web_session()

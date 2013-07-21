@@ -4,6 +4,7 @@ from common import Base
 
 from sqlalchemy import Column, Sequence, Unicode, UnicodeText, Integer, Boolean, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
+from datetime import datetime
 
 class Todo(Base):
     ''' Todo list '''
@@ -26,6 +27,8 @@ class Todo(Base):
         self.created = created if created else datetime.utcnow()
         self.owner_id = owner_id
         self.name=name
-        return id
+
+    def get_details(self):
+        return {'id':self.id,'name':self.name,'time':self.created.strftime("%Y-%m-%d %H:%M:%S")}
 
 

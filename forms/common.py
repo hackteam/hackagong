@@ -43,6 +43,10 @@ class RegisterForm(Form):
 class AddTask(Form):
     task = TextField()
 
+class AddTodo(Form):
+    todo_list = TextField()
+
 class UploadForm(Form):
     uploaded_file = FileField(u'Upload your video: ',
         [Required()])
+
