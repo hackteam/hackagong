@@ -2,20 +2,21 @@
 %rebase template title="#done"
 
 %include header_logged ws=ws
-    <div class="container">
+<div class="container">
 
-      <div class="row-fluid list-container">
-  <div class="span12 mainbox landing" style="height: 500px;">
-  <div>
-  <img class="userimg" src="{{BASE_URL_PATH_RES}}images/user_profile_pictures/{{ws['profile_picture']}}" alt="Profile Picture" />
-  </div>
-  <div id="user_name">User Profile: {{ws['username']}}</div>
-  <div style="clear:both"></div>
-  <div class="profile-third"><span class="numb">{{num_lists}}</span><br/><span class="numbitem">To do lists</span><br/><a href="/lists" class="numbview">View</a></div>
-  <div class="profile-third"><span class="numb">{{num_tasks}}</span><br/><span class="numbitem">Things to do</span><br/><a href="/addtask" class="numbview">View</a></div>
-  <div class="profile-third"><span class="numb">{{num_perks}}</span><br/><span class="numbitem">Perks earned</span><br/><a href="/perks" class="numbview">View</a></div>
+  <div class="row-fluid list-container">
+    <div class="span12 mainbox landing" style="height: 500px;">
+      <div>
+        <img class="userimg" src="{{BASE_URL_PATH_RES}}images/user_profile_pictures/{{ws['profile_picture']}}" alt="Profile Picture" />
+      </div>
+      <div id="user_name">User Profile: {{ws['username']}}</div>
+      <div style="clear:both"></div>
+      <div class="profile-third"><span class="numb">{{num_lists}}</span><br/><span class="numbitem">To do lists</span><br/><a href="/lists" class="numbview">View</a></div>
+      <div class="profile-third"><span class="numb">{{num_tasks}}</span><br/><span class="numbitem">Things to do</span><br/><a href="/addtask" class="numbview">View</a></div>
+      <div class="profile-third"><span class="numb">{{num_perks}}</span><br/><span class="numbitem">Perks earned</span><br/><a href="/perks" class="numbview">View</a></div>
 
 
+    </div>
 </div>
-
-    </div> <!-- /container -->
+%include footer
+</div> <!-- /container -->
